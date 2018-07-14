@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <property name="APP_Name" value="zipkin" />
+    <property name="LOG_HOME" value="/data/logs" />
+    <contextName>${APP_Name}</contextName>
+
+    <jmxConfigurator/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd} %d{HH:mm:ss.SSSZ} %-5level %logger{36} [${APP_Name}, %16X{X-B3-TraceId}, %16X{X-B3-SpanId}, %5X{X-Span-Export}], [%15.15t] : %m%n%wEx</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE"  class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/${APP_Name}/app.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <FileNamePattern>${LOG_HOME}/${APP_Name}/%d{yyyy-MM-dd__HH}.%i.log</FileNamePattern>
+            <maxFileSize>500MB</maxFileSize>
+        </rollingPolicy>
+
+         <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder">
+        	<customFields>{"sv":"${APP_Name}"}</customFields>
+        </encoder>
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="FILE" />
+    </root>
+
+</configuration>

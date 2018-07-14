@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+	<property name="APP_Name" value="config" />
+	<property name="LOG_HOME" value="/data/logs" />
+    <contextName>${APP_Name}</contextName>
+
+	<jmxConfigurator/>
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+
+        <encoder>
+            <pattern>
+                ${CONSOLE_LOG_PATTERN}
+            </pattern>
+        </encoder>
+
+    </appender>
+
+    <appender name="FILE"  class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/${APP_Name}/app.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+               <!--日志文件输出的文件名-->
+               <FileNamePattern>${LOG_HOME}/${APP_Name}/%d{yyyy-MM-dd_HH}.%i.log</FileNamePattern>
+               <maxFileSize>500MB</maxFileSize>
+        </rollingPolicy>
+        <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder">
+        	<customFields>{"sv":"${APP_Name}"}</customFields>
+        </encoder>
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="FILE" />
+    </root>
+
+
+    
+</configuration>

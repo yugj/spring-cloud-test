@@ -1,0 +1,8 @@
+server:
+  port: 9005
+
+spring:
+  profiles:
+    active: @profile.id@
+  application:
+    name: swagger

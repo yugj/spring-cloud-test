@@ -1,0 +1,36 @@
+server: 
+  port: 9003
+spring:
+  application:
+    name: zipkin
+  jmx:
+    enabled: false
+#不使用sleuth--DB中获取数据
+  sleuth:
+    enabled: false
+#全量数据#收集，默认0.1
+    sampler:
+      percentage: 0.1
+  datasource:
+#    schema: classpath:/mysql.sql
+    url: jdbc:mysql://localhost:3306/zipkin
+    username: root
+    password: root
+    continueOnError: true
+    initialize: true
+
+zipkin:
+  storage:
+#    StorageComponent: mysql
+#    type: mysql
+    mysql:
+      host: localhost
+      port: 3306
+      password: root
+      username: root
+      db: zipkin
+  collector:
+#    http:
+#      enabled: false
+    kafka:
+      bootstrap-servers: localhost:9092

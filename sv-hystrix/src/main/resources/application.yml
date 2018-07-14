@@ -1,0 +1,48 @@
+server:
+  port: 9007
+
+spring:
+  profiles:
+    active: @profile.id@
+  application:
+    name: sv-hystrix
+
+# feign中启用Hystrix
+feign:
+  hystrix:
+    enabled: true
+#熔断器超时时间设置
+hystrix:
+  threadpool:
+    default:
+      coreSize: 10
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000
+      circuitBreaker:
+        requestVolumeThreshold: 2
+    "HellStub2#hell2(HellReq)":
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 30000
+      circuitBreaker:
+        requestVolumeThreshold: 2
+ribbon:
+  MaxConnectionsPerHost: 1000
+  MaxTotalConnections: 3000
+  ReadTimeout: 2000
+  ConnectTimeout: 1000
+  MaxAutoRetries: 0
+  MaxAutoRetriesNextServer: 0
+"HellStub2#hell2(HellReq)":
+  ribbon:
+    MaxConnectionsPerHost: 1000
+    MaxTotalConnections: 3000
+    ReadTimeout: 20000
+    ConnectTimeout: 10000
+    MaxAutoRetries: 0
+    MaxAutoRetriesNextServer: 0

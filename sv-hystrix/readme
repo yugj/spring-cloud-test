@@ -1,0 +1,7 @@
+需要确认的点
+1,熔断触发条件
+2,和feign ribbon结合使用 及其配置相互影响
+3,监控面板使用
+
+测试入口
+curl localhost:9007/hystrix/hell-client?hell=xxx

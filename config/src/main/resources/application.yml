@@ -1,0 +1,24 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: config
+  cloud:
+    config:
+      label: master
+      server:
+        git:
+          uri: https://github.com/yugj/config-files.git
+          #config-repo # git仓库地址下的相对地址，可以配置多个，用,分割。
+          search-paths: master
+          username: xxx
+          password: xxx
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+management:
+  security:
+    enabled: false

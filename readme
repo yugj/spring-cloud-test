@@ -1,0 +1,10 @@
+service port
+eureka  9000
+config  9001
+turbine 9002
+zipkin  9003
+zipkin-client 9004
+swagger 9005
+rest-sv 9006
+sv-hystrix  9007
+rabbitmq 9008

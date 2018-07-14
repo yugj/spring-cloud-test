@@ -1,0 +1,25 @@
+server:
+  port: 9004
+
+spring:
+  zipkin:
+    sender:
+      type: kafka
+  profiles:
+    active: @profile.id@
+  application:
+    name: zipkin-client
+#全量数据收集，默认0.1
+  sleuth:
+    sampler:
+      percentage: 1
+    # HTTP ENCODING
+  http:
+    encoding.charset: UTF-8
+    encoding.enabled: true
+    encoding.force: true
+    multipart:
+      max-file-size: 104857600
+  kafka:
+    bootstrap-servers: localhost:9092
+
