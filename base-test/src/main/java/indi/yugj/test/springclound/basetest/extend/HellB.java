@@ -6,10 +6,8 @@ package indi.yugj.test.springclound.basetest.extend;
  */
 public class HellB extends BaseHell{
 
-
     HellB(String key, String value) {
-        this.key = key;
-        this.value = value;
+        super(key, value);
     }
 
     @Override

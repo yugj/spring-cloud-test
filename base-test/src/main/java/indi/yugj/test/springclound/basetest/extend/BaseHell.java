@@ -9,6 +9,11 @@ public abstract class BaseHell {
     String key;
     String value;
 
+    BaseHell(String key, String value) {
+        this.key = key;
+        this.value = value;
+    }
+
     public abstract String hell();
 
 }

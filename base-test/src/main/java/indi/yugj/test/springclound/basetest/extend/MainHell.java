@@ -20,7 +20,7 @@ public class MainHell {
         CLAZZ_MAP.put("hellb", HellB.class);
 
         //routing key
-        String hellKey = "hellb";
+        String hellKey = "hella";
         //biz value
         String hellValue = "hell-tar";
 
