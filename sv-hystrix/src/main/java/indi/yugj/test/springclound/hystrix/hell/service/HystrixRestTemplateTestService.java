@@ -2,10 +2,13 @@ package indi.yugj.test.springclound.hystrix.hell.service;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import indi.yugj.test.springclound.hystrix.hell.schema.HellReq;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
-import java.net.URI;
 
 /**
  * Description:rest template using hystrix test
@@ -13,6 +16,9 @@ import java.net.URI;
  */
 @Service
 public class HystrixRestTemplateTestService {
+
+    @Autowired
+    private RestTemplate restTemplate;
 
     /**
      * commandKey定义为了定制配置hystrix
@@ -22,14 +28,21 @@ public class HystrixRestTemplateTestService {
     @HystrixCommand(commandKey = "hystrix-rest",fallbackMethod = "fallback")
     public String hell(String hell) {
 
-        URI uri = URI.create("http://localhost:9006/rest-sv/hell");
+        String server = "http://localhost:9006/rest-sv/hell";
 
         HellReq req = new HellReq();
         req.setHellReq(hell);
 
+        HttpHeaders requestHeaders = new HttpHeaders();
+        requestHeaders.add("key1", "values");
+        requestHeaders.add("key2", "ddd");
+        HttpEntity<Object> requestEntity = new HttpEntity<Object>(req, requestHeaders);
+
         RestTemplate restTemplate = new RestTemplate();
 
-        return restTemplate.postForObject(uri, req, String.class);
+        ResponseEntity<String> response = restTemplate.exchange(server, HttpMethod.POST, requestEntity, String.class);
+
+        return response.getBody();
     }
 
     /**
@@ -37,7 +50,7 @@ public class HystrixRestTemplateTestService {
      * fallback data
      * @return msg
      */
-    public String fallback(String hell) {
+    private String fallback(String hell) {
 
         System.out.println("hystrix-rest-template-fallback");
         return "hystrix-rest-template-fallback";
