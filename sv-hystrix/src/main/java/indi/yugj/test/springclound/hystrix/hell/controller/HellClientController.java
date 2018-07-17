@@ -1,7 +1,10 @@
-package indi.yugj.test.springclound.hystrix.hell;
+package indi.yugj.test.springclound.hystrix.hell.controller;
 
 import indi.yugj.test.springclound.hystrix.feign.HellStub;
 import indi.yugj.test.springclound.hystrix.feign.HellStub2;
+import indi.yugj.test.springclound.hystrix.hell.schema.HellReq;
+import indi.yugj.test.springclound.hystrix.hell.schema.HellResp;
+import indi.yugj.test.springclound.hystrix.hell.service.HystrixRestTemplateTestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,10 +22,11 @@ public class HellClientController {
     private HellStub hellStub;
     @Autowired
     private HellStub2 hellStub2;
+    @Autowired
+    private HystrixRestTemplateTestService hellService;
 
     @RequestMapping("/hell-client")
     @ResponseBody
-//    @HystrixCommand
     public String hellClient(String hell) {
 
         HellReq hellReq = new HellReq();
@@ -42,7 +46,6 @@ public class HellClientController {
 
     @RequestMapping("/hell-client2")
     @ResponseBody
-//    @HystrixCommand
     public String hellClient2(String hell) {
 
         HellReq hellReq = new HellReq();
@@ -56,6 +59,17 @@ public class HellClientController {
         HellResp resp = hellStub2.hell2(hellReq);
 
         return "feign client resp : " + resp.getHellResp();
+
+    }
+
+
+    @RequestMapping("/hell-client3")
+    @ResponseBody
+    public String hellClient3(String hell) {
+
+        String rs = hellService.hell(hell);
+
+        return "rest template resp : " + rs;
 
     }
 

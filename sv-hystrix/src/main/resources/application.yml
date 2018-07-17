@@ -31,6 +31,13 @@ hystrix:
             timeoutInMilliseconds: 30000
       circuitBreaker:
         requestVolumeThreshold: 2
+    "hystrix-rest":
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000
+      circuitBreaker:
+        requestVolumeThreshold: 2
 ribbon:
   MaxConnectionsPerHost: 1000
   MaxTotalConnections: 3000

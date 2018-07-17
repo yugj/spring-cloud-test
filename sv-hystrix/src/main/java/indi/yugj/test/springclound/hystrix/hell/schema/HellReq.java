@@ -1,4 +1,4 @@
-package indi.yugj.test.springclound.hystrix.hell;
+package indi.yugj.test.springclound.hystrix.hell.schema;
 
 /**
  * Description:

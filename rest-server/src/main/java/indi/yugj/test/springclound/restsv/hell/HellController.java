@@ -25,6 +25,10 @@ public class HellController {
             Thread.sleep(5000L);
         }
 
+        if ("error".equals(req.getHellReq())) {
+            throw new RuntimeException("hell error");
+        }
+
         LOGGER.info("hell req : " + req.getHellReq());
 
         HellResp resp = new HellResp();

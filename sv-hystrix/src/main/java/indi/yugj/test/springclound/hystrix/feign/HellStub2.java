@@ -1,7 +1,7 @@
 package indi.yugj.test.springclound.hystrix.feign;
 
-import indi.yugj.test.springclound.hystrix.hell.HellReq;
-import indi.yugj.test.springclound.hystrix.hell.HellResp;
+import indi.yugj.test.springclound.hystrix.hell.schema.HellReq;
+import indi.yugj.test.springclound.hystrix.hell.schema.HellResp;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
