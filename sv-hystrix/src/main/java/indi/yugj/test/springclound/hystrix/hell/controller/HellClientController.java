@@ -2,6 +2,7 @@ package indi.yugj.test.springclound.hystrix.hell.controller;
 
 import indi.yugj.test.springclound.hystrix.feign.HellStub;
 import indi.yugj.test.springclound.hystrix.feign.HellStub2;
+import indi.yugj.test.springclound.hystrix.feign.HellStub3;
 import indi.yugj.test.springclound.hystrix.hell.schema.HellReq;
 import indi.yugj.test.springclound.hystrix.hell.schema.HellResp;
 import indi.yugj.test.springclound.hystrix.hell.service.HystrixRestTemplateTestService;
@@ -22,6 +23,8 @@ public class HellClientController {
     private HellStub hellStub;
     @Autowired
     private HellStub2 hellStub2;
+    @Autowired
+    private HellStub3 hellStub3;
     @Autowired
     private HystrixRestTemplateTestService hellService;
 
@@ -68,6 +71,24 @@ public class HellClientController {
     public String hellClient3(String hell) {
 
         String rs = hellService.hell(hell);
+
+        return "rest template resp : " + rs;
+
+    }
+
+    @RequestMapping("/hell-client4")
+    @ResponseBody
+    public String hellClient4(String hell) {
+
+        HellReq hellReq = new HellReq();
+
+        if (hell == null) {
+            hellReq.setHellReq("yugj test");
+        } else {
+            hellReq.setHellReq(hell);
+        }
+
+        HellResp rs = hellStub3.hell3(hellReq);
 
         return "rest template resp : " + rs;
 
