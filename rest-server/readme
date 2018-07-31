@@ -1,3 +1,4 @@
-post hell api
+rest-server test app
 
+post hell api
 curl -H "Content-Type: application/json" -X POST -d '{"hellReq":"test"}' http://localhost:9006/rest-sv/hell

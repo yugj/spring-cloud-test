@@ -1,0 +1,5 @@
+package
+mvn clean package docker:build
+
+run
+docker run -p 9006:9006 rest-server-dockerfile
