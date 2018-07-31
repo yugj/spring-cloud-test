@@ -6,3 +6,5 @@ docker build -t rest-server-dockerfile /Users/yugj/mdev/yugj/test/sc-base/rest-s
 
 run
 docker run -p 9006:9006 rest-server-dockerfile
+
+docker run --rm -e JAVA_OPTS='-Xmx1g' rest-server-dockerfile
