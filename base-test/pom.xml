@@ -17,6 +17,13 @@
             <artifactId>opencc4j</artifactId>
             <version>1.0.2</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.35</version>
+        </dependency>
+
     </dependencies>
 
 
