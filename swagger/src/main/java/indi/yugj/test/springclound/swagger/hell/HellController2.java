@@ -16,14 +16,14 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by yugj on 18/6/13 17:18.
  */
 @RestController
-@RequestMapping("/v1/hell")
-@Api(description = "hell接口测试demo")
-public class HellController {
+@RequestMapping("/v1/hell2")
+@Api(description = "hell接口测试demo2")
+public class HellController2 {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(HellController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(HellController2.class);
 
     @ApiOperation("hell-test api 中文")
-    @RequestMapping(value = "/hellTest",method = RequestMethod.POST)
+    @RequestMapping(value = "/hellTest2",method = RequestMethod.POST)
     public HellResp hellTest(@RequestBody HellReq hellReq) {
 
         LOGGER.info("hell req: {}", hellReq);

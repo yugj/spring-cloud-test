@@ -10,11 +10,22 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel("模型hell")
 public class HellReq {
 
-    @ApiModelProperty("用户ID")
+    @ApiModelProperty(value = "用户ID",example = "8888")
     private Long userId;
 
-    @ApiModelProperty("用户名")
+    @ApiModelProperty(name = "user name",value = "用户名",example = "yugj")
     private String name;
+
+    @ApiModelProperty(name = "sub子类",value = "子类属性",required=true)
+    private SubHell subHell;
+
+    public SubHell getSubHell() {
+        return subHell;
+    }
+
+    public void setSubHell(SubHell subHell) {
+        this.subHell = subHell;
+    }
 
     public Long getUserId() {
         return userId;
