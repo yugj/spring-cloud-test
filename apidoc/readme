@@ -1,0 +1,6 @@
+1,安装
+npm install apidoc -g
+
+2,配置apidoc.json 全局
+3,运行
+apidoc -i ./ -o ./src/main/webapp/WEB-INF/doc

@@ -21,6 +21,7 @@
         <module>base-test</module>
         <module>rest-server</module>
         <module>rabbitmq</module>
+        <module>apidoc</module>
     </modules>
 
 
