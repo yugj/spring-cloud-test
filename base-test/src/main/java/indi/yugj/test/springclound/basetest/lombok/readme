@@ -1,0 +1,16 @@
+编译期间生成注解支持的方法属性,应该没有什么性能问题
+
+依赖idea lombok插件,不然idea 检测报错(lombok 支持不写get set方法,直接使用)
+
+
+lombok
+使用非公开api，官方可以不通知情况下随意修改，并且可能非支持所有sdk
+http://jnb.ociweb.com/jnb/jnbJan2010.html#controversy
+
+get set方法为封装模式一部分，不应该省略
+java语法特性就是明确的定义方法、属性，不太符合java语法习惯
+
+使用Builder并不会是代码减少太多
+
+
+不太建议使用
