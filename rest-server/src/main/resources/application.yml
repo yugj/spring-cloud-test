@@ -6,3 +6,8 @@ spring:
     active: @profile.id@
   application:
     name: rest-server
+
+
+management:
+  security:
+    enabled: false
