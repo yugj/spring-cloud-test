@@ -2,8 +2,6 @@ server:
   port: 9007
 
 spring:
-  profiles:
-    active: @profile.id@
   application:
     name: sv-hystrix
 
@@ -36,6 +34,13 @@ hystrix:
         isolation:
           thread:
             timeoutInMilliseconds: 3000
+      circuitBreaker:
+        requestVolumeThreshold: 2
+    "rest-serv":
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 2000
       circuitBreaker:
         requestVolumeThreshold: 2
 ribbon:
