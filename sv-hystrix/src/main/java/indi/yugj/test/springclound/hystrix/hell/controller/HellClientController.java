@@ -99,12 +99,12 @@ public class HellClientController {
 
     @RequestMapping("/hell-client5")
     @ResponseBody
-    @HystrixCommand(commandKey = "rest-serv",fallbackMethod = "testTimeout")
     public String hellClient5(String hell) {
 
         return hystrixTest(hell);
     }
 
+    @HystrixCommand(commandKey = "rest-serv",fallbackMethod = "testTimeout")
     public String hystrixTest(String hell) {
         String reqUrl = "http://localhost:9006/rest-sv/hell";
 

@@ -33,7 +33,7 @@ hystrix:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 3000
+            timeoutInMilliseconds: 1000
       circuitBreaker:
         requestVolumeThreshold: 2
     "rest-serv":
