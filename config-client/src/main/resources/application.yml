@@ -1,0 +1,13 @@
+server:
+  port: 9009
+
+spring:
+  profiles:
+    active: @profile.id@
+  application:
+    name: config-client
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest

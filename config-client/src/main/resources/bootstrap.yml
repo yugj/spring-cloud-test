@@ -1,0 +1,27 @@
+spring:
+  profiles:
+    active: @profile.id@
+  cloud:
+    config:
+      enabled: true
+      name: hell
+      label: master
+      profile: dev
+      discovery:
+        enabled: true
+        service-id: config
+    stream:
+      default-binder: rabbit
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9000/eureka/
+    healthcheck:
+      enabled: false
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+    lease-renewal-interval-in-seconds: 20 #租期更新时间间隔R（默认30秒）
+    lease-expiration-duration-in-seconds: 60  #租期到期时间（默认90秒）不怕出错的话，时间可以更短
+    registry-fetch-interval-seconds: 20 #更新eureka时间 默认30秒

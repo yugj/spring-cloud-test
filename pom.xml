@@ -22,6 +22,7 @@
         <module>rest-server</module>
         <module>rabbitmq</module>
         <module>apidoc</module>
+        <module>config-client</module>
     </modules>
 
 

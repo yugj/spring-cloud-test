@@ -8,3 +8,4 @@ swagger 9005
 rest-sv 9006
 sv-hystrix  9007
 rabbitmq 9008
+config-client 9009
