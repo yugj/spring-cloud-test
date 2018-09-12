@@ -10,9 +10,9 @@ import org.springframework.cloud.client.SpringCloudApplication;
  */
 @SpringCloudApplication
 @EnableAutoConfiguration
-public class RestStart {
+public class ConfigClientStart {
 
     public static void main(String[] args) {
-        SpringApplication.run(RestStart.class, args);
+        SpringApplication.run(ConfigClientStart.class, args);
     }
 }

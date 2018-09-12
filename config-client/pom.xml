@@ -12,7 +12,7 @@
     <artifactId>config-client</artifactId>
 
     <properties>
-        <start-class>indi.yugj.test.springclound.configclient.RestStart</start-class>
+        <start-class>indi.yugj.test.springclound.configclient.ConfigClientStart</start-class>
     </properties>
 
     <dependencies>
