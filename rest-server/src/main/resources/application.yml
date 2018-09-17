@@ -7,6 +7,19 @@ spring:
   application:
     name: rest-server
 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9000/eureka/
+  healthcheck:
+     enabled: false
+  instance:
+    lease-renewal-interval-in-seconds: 10 #租期更新时间间隔R（默认30秒）
+    lease-expiration-duration-in-seconds: 30  #租期到期时间（默认90秒）
+    metadata-map:
+      cluster: main
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
 
 management:
   security:
