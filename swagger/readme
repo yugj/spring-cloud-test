@@ -3,3 +3,6 @@ http://localhost:9005/swagger-ui.html
 
 sop 接口定义参数和返回在handler中,目前不适合用swagger
 swagger扫描文件依赖requestMapping注解,除非在handler加上mapping注解,加上比较怪异,临时沟通先不处理
+
+
+ApiListingTagReader.apply

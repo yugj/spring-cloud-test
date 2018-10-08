@@ -19,7 +19,7 @@ hystrix:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 3000
+            timeoutInMilliseconds: 1000
       circuitBreaker:
         requestVolumeThreshold: 2
     "HellStub2#hell2(HellReq)":
@@ -47,7 +47,7 @@ ribbon:
   MaxConnectionsPerHost: 1000
   MaxTotalConnections: 3000
   ReadTimeout: 2000
-  ConnectTimeout: 1000
+  ConnectTimeout: 100
   MaxAutoRetries: 0
   MaxAutoRetriesNextServer: 0
 "HellStub2#hell2(HellReq)":
