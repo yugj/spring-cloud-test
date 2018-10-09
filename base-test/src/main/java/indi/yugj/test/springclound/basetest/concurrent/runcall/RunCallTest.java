@@ -6,7 +6,7 @@ import java.util.concurrent.*;
  * callable有返回 runnable无
  * callable可🏃异常
  * FutureTask 支持两则,使用runnable最终被转callable执行
- * Future get阻塞执行
+ * Future get阻塞执行 awaitDone逻辑
  * else if (s == COMPLETING) // cannot time out yet
  *   Thread.yield();
  *
