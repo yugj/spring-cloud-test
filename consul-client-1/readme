@@ -1,0 +1,2 @@
+测试入口
+curl localhost:8501/consul/hell-client?hell=xxx

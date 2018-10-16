@@ -1,0 +1,18 @@
+server:
+  port: 8503
+
+spring:
+  profiles:
+    active: @profile.id@
+  application:
+    name: consul-rest-server
+  clound:
+    consul:
+      host: localhost
+      port: 8500
+    discovery:
+      serviceName: ${spring.application.name}
+
+management:
+  security:
+    enabled: false
