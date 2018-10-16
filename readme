@@ -9,3 +9,7 @@ rest-sv 9006
 sv-hystrix  9007
 rabbitmq 9008
 config-client 9009
+
+consul-client 8501
+consul-rest-server 8502
+consul-rest-server2 8503
