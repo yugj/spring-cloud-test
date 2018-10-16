@@ -1,2 +1,5 @@
 测试入口
 curl localhost:8501/consul/hell-client?hell=xxx
+
+依赖consul服务
+启动:consul agent -ui -dev -advertise 127.0.0.1
