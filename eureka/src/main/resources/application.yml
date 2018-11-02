@@ -14,8 +14,10 @@ eureka:
     prefer-ip-address: true
     instance-id: ${spring.cloud.client.ipAddress}:${server.port}
   server:
-    enable-self-preservation: false
-    eviction-interval-timer-in-ms: 30000
+    enable-self-preservation: false #default true
+    eviction-interval-timer-in-ms: 10000 #default 60000
+    response-cache-update-interval-ms: 3000 #default 30000
+    use-read-only-response-cache: false
 endpoints:
   shutdown:
     enabled: true

@@ -1,0 +1,30 @@
+server:
+  port: 9010
+
+spring:
+  application:
+    name: sv-ribbon
+ribbon:
+  MaxConnectionsPerHost: 1000
+  MaxTotalConnections: 3000
+  ReadTimeout: 10000
+  ConnectTimeout: 2000
+  MaxAutoRetries: 0
+  MaxAutoRetriesNextServer: 0
+  ServerListRefreshInterval: 1000
+  eureka:
+    enabled: true
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9000/eureka/
+  healthcheck:
+     enabled: true
+  instance:
+    lease-renewal-interval-in-seconds: 5 #租期更新时间间隔R（默认30秒）
+    lease-expiration-duration-in-seconds: 20  #租期到期时间（默认90秒)
+    registry-fetch-interval-seconds: 5 #更新eureka时间 默认30秒
+    metadata-map:
+      cluster: main
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}

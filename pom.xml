@@ -26,6 +26,7 @@
         <module>consul-client-1</module>
         <module>consul-rest-server</module>
         <module>consul-rest-server2</module>
+        <module>sv-ribbon</module>
     </modules>
 
 
