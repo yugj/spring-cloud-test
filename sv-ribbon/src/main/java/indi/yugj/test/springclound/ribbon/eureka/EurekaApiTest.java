@@ -1,13 +1,20 @@
 package indi.yugj.test.springclound.ribbon.eureka;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.time.DateFormatUtils;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.util.CollectionUtils;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * @author yugj
@@ -29,14 +36,58 @@ public class EurekaApiTest {
 
         RestTemplate baseTemplate = new RestTemplate(httpRequestFactory);
 
+        String dataLine = DateFormatUtils.format(System.currentTimeMillis(),"yyyy-MM-dd HH:mm:ss");
+
         for (int i = 0; i < Integer.MAX_VALUE; i++) {
 
-            Thread.sleep(500L);
+            List<EurekaInstance> instanceList = getRestServerInstance();
 
-            String msg = testCoreApi("192.168.1.138", "UP",baseTemplate);
-            writeTrace(msg, i);
+            if (CollectionUtils.isEmpty(instanceList)) {
+                System.out.println("no instance,return");
+                continue;
+            }
+
+            Thread.sleep(500L);
+            for (EurekaInstance instance : instanceList) {
+                String instanceInfo = instance.getIpAddr() + "-" + instance.getStatus();
+                System.out.println(dataLine + "instanceInfo," + instanceInfo);
+                writeTrace(instanceInfo, i);
+
+                String msg = testCoreApi(instance.getIpAddr(), instance.getStatus(),baseTemplate);
+                writeTrace(msg, i);
+            }
         }
 
+    }
+
+    private static List<EurekaInstance> getRestServerInstance() {
+
+        String dataLine = DateFormatUtils.format(System.currentTimeMillis(),"yyyy-MM-dd HH:mm:ss");
+
+        String getApi = "http://localhost:9000/eureka/apps/rest-server";
+
+        RestTemplateBuilder builder = new RestTemplateBuilder();
+
+        ResponseEntity hell;
+        try {
+            hell = builder.build().getForEntity(getApi, String.class, new HashMap<>());
+        } catch (HttpClientErrorException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+
+        hell.getStatusCodeValue();
+        String resp = hell.getBody().toString();
+        System.out.println(dataLine + " eureka resp:" + resp);
+
+        JSONObject obj = JSON.parseObject(hell.getBody().toString());
+        String application = obj.get("application").toString();
+
+        JSONObject instances = JSON.parseObject(application);
+
+        List<EurekaInstance> instanceList = JSON.parseArray(instances.get("instance").toString(), EurekaInstance.class);
+
+        return instanceList;
 
     }
 
