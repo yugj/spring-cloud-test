@@ -11,7 +11,8 @@ ribbon:
   ConnectTimeout: 2000
   MaxAutoRetries: 0
   MaxAutoRetriesNextServer: 0
-  ServerListRefreshInterval: 1000
+  ServerListRefreshInterval: 5000
+  NFLoadBalancerRuleClassName: com.netflix.loadbalancer.AvailabilityFilteringRule
   eureka:
     enabled: true
 eureka:
@@ -22,7 +23,7 @@ eureka:
      enabled: true
   instance:
     lease-renewal-interval-in-seconds: 5 #租期更新时间间隔R（默认30秒）
-    lease-expiration-duration-in-seconds: 20  #租期到期时间（默认90秒)
+    lease-expiration-duration-in-seconds: 15  #租期到期时间（默认90秒)
     registry-fetch-interval-seconds: 5 #更新eureka时间 默认30秒
     metadata-map:
       cluster: main

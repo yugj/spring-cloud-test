@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UrlPathHelper;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -35,7 +36,8 @@ public class ErrorHandler extends AbstractErrorController {
         HttpStatus httpStatus = getStatus(request);
         int code = httpStatus.value();
 
-        LOGGER.warn("sys error,http status:" + code);
+        String originUri = new UrlPathHelper().getOriginatingRequestUri(request);
+        LOGGER.warn("sys error,http status:{},originUri:{}",code,originUri);
 
         if (HttpStatus.NOT_FOUND.value() == code) {
             return new ResponseEntity<>(new CgiResp("404", "404"), HttpStatus.NOT_FOUND);

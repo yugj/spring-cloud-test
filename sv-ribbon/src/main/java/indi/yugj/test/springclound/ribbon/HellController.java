@@ -30,17 +30,19 @@ public class HellController {
             hellReq.setHellReq(hell);
         }
 
-        try {
-            HellResp resp = hellStub.hell(hellReq);
-            System.out.println("hell ->> success:" + resp.getHellResp());
-            return "feign client resp : " + resp.getHellResp();
+        for (int i = 0; i < Integer.MAX_VALUE; i++) {
 
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return e.getMessage();
+            try {
+                Thread.sleep(1000L);
+
+                HellResp resp = hellStub.hell(hellReq);
+                System.out.println("hell ----------------------------------------------------->> success:" + resp.getHellResp());
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
         }
 
-
+        return "hell";
 
     }
 }
