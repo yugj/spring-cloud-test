@@ -10,6 +10,7 @@ sv-hystrix  9007
 rabbitmq 9008
 config-client 9009
 sv-ribbon 9010
+eureka-client 9011
 
 consul-client 8501
 consul-rest-server 8502

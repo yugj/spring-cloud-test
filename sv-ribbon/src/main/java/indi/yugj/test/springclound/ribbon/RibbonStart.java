@@ -30,7 +30,7 @@ public class RibbonStart {
 
     @Bean
     public IPing ribbonPing() {
-        return new PingUrl(false,"/info");
+        return new PingUrl(false,"/info1");
     }
 
 }

@@ -30,7 +30,8 @@ public class HellController {
             hellReq.setHellReq(hell);
         }
 
-        for (int i = 0; i < Integer.MAX_VALUE; i++) {
+        Integer end = Integer.valueOf(hell);
+        for (int i = 0; i < end; i++) {
 
             try {
                 Thread.sleep(1000L);
