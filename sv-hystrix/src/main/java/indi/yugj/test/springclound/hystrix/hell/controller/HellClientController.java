@@ -7,12 +7,15 @@ import indi.yugj.test.springclound.hystrix.feign.HellStub3;
 import indi.yugj.test.springclound.hystrix.hell.schema.HellReq;
 import indi.yugj.test.springclound.hystrix.hell.schema.HellResp;
 import indi.yugj.test.springclound.hystrix.hell.service.HystrixRestTemplateTestService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+
 
 /**
  * Description:测试类,触发入口
@@ -30,6 +33,8 @@ public class HellClientController {
     private HellStub3 hellStub3;
     @Autowired
     private HystrixRestTemplateTestService hellService;
+
+    private static final Logger log = LoggerFactory.getLogger(HellClientController.class);
 
     @RequestMapping("/hell-client")
     @ResponseBody
@@ -121,6 +126,29 @@ public class HellClientController {
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<String> response = restTemplate.exchange(reqUrl, HttpMethod.POST, requestEntity, String.class);
         return response.getBody();
+    }
+
+    @RequestMapping("/hell-client6")
+    @ResponseBody
+    public String hellClient6(String hell) throws InterruptedException {
+
+        HellReq hellReq = new HellReq();
+        if (hell == null) {
+            hellReq.setHellReq("yugj test");
+        } else {
+            hellReq.setHellReq(hell);
+        }
+
+        for (int i = 0; i < Integer.MAX_VALUE; i++) {
+
+            Thread.sleep(300L);
+
+            HellResp resp = hellStub.hell(hellReq);
+            log.info("---------------->>" + resp.getHellResp());
+
+        }
+
+        return "hell";
     }
 
     private String testTimeout(String hell) {

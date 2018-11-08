@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Created by yugj on 18/7/3 14:54.
  */
 @Service
-@FeignClient(name = "rest-server", url = "http://localhost:9006"
+@FeignClient(name = "rest-server"
         ,fallback = HellFallback.class
         ,fallbackFactory = HellFallbackFactory.class)
 public interface HellStub {

@@ -50,6 +50,7 @@ ribbon:
   ConnectTimeout: 100
   MaxAutoRetries: 0
   MaxAutoRetriesNextServer: 0
+  ServerListRefreshInterval: 5000
 "HellStub2#hell2(HellReq)":
   ribbon:
     MaxConnectionsPerHost: 1000
@@ -66,8 +67,9 @@ eureka:
   healthcheck:
      enabled: false
   instance:
-    lease-renewal-interval-in-seconds: 10 #租期更新时间间隔R（默认30秒）
-    lease-expiration-duration-in-seconds: 30  #租期到期时间（默认90秒）
+    lease-renewal-interval-in-seconds: 5 #租期更新时间间隔R（默认30秒）
+    lease-expiration-duration-in-seconds: 15  #租期到期时间（默认90秒）
+    registry-fetch-interval-seconds: 5 #更新eureka时间 默认30秒
     metadata-map:
       cluster: main
     prefer-ip-address: true
