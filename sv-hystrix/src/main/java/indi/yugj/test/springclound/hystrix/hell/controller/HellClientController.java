@@ -78,9 +78,16 @@ public class HellClientController {
     @ResponseBody
     public String hellClient3(String hell) {
 
-        String rs = hellService.hell(hell);
+        try {
+            String rs = hellService.hell(hell);
+            return "rest template resp : " + rs;
+        } catch (Exception e) {
+            log.warn("error --> {}" + e.getMessage(),e);
+            return e.getMessage();
+        }
 
-        return "rest template resp : " + rs;
+
+
 
     }
 

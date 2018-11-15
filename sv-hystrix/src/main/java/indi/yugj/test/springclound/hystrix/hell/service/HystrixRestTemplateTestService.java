@@ -53,7 +53,8 @@ public class HystrixRestTemplateTestService {
     private String fallback(String hell) {
 
         System.out.println("hystrix-rest-template-fallback");
-        return "hystrix-rest-template-fallback";
+        throw new RuntimeException("hell");
+//        return "hystrix-rest-template-fallback";
     }
 
 }
