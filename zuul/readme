@@ -1,0 +1,3 @@
+curl -H "Content-Type: application/json" localhost:9012/rest-sv/hell -d '{
+"hellReq":"error"
+}'

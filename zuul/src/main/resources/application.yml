@@ -1,0 +1,47 @@
+server:
+  port: 9012
+spring:
+  profiles:
+    active: @profile.id@
+  application:
+    name: zuul
+  http:
+    encoding.charset: UTF-8
+    encoding.enabled: true
+    encoding.force: true
+zuul:
+  routes:
+    rest-server:
+      path: /rest-sv/**
+      strip-prefix: false
+      serviceId: rest-server
+  max:
+    host:
+      connections: 60000
+  host:
+    socket-timeout-millis: 2000
+    connect-timeout-millis: 1000
+    max-per-route-connections: 1000
+    max-total-connections: 1000
+  semaphore:
+    max-semaphores: 2000
+log:
+  home: /data/logs/${spring.profiles.active}
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9000/eureka/
+    initial-instance-info-replication-interval-seconds: 40 #default 40
+  healthcheck:
+     enabled: true
+  instance:
+    lease-renewal-interval-in-seconds: 5 #租期更新时间间隔R（默认30秒）
+    lease-expiration-duration-in-seconds: 15  #租期到期时间（默认90秒）
+    registry-fetch-interval-seconds: 5
+    metadata-map:
+      cluster: main
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+
+
