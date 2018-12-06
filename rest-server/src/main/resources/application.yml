@@ -3,7 +3,7 @@ server:
 
 spring:
   profiles:
-    active: @profile.id@
+    active: local
   application:
     name: rest-server
 
@@ -27,3 +27,7 @@ management:
     enabled: false
 log:
   home: /data/logs/${spring.profiles.active}
+
+sys:
+  eureka:
+    shuntDownWaitSeconds: 100
