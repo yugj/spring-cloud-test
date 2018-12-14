@@ -36,6 +36,10 @@ public class EurekaAfterStoppedEventListener implements ApplicationListener<Cont
             log.warn(e.getMessage());
         }
 
+        log.info("add shutdown hook");
+
+        Runtime.getRuntime().addShutdownHook(new ShutdownHook(Thread.currentThread()));
+
         log.info("waiting other event close");
 
 

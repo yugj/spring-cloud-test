@@ -1,5 +1,6 @@
 package indi.yugj.test.springclound.restsv.hell;
 
+import indi.yugj.test.springclound.restsv.concurrent.JobHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -50,6 +51,43 @@ public class HellController {
         resp.setHellResp("rest-sv resp,hell req: " + req.getHellReq());
 
         return resp;
+    }
+
+    @RequestMapping("/shutdownTest")
+    public String shutdownTest() {
+
+        JobHelper.EXECUTOR_SERVICE.shutdown();
+
+        return "success";
+    }
+
+
+    @RequestMapping("/submitJob")
+    public String submitJob() {
+        JobHelper.submit(() -> hell());
+        return "success";
+    }
+
+    @RequestMapping("/sleep")
+    public String sleep() throws InterruptedException {
+
+        LOGGER.info("sleep 60s start");
+
+        Thread.sleep(60000L);
+
+        LOGGER.info("sleep end");
+
+        return "success";
+    }
+
+
+
+
+    private String hell() throws InterruptedException {
+        LOGGER.info("sleep start");
+        Thread.sleep(60000L);
+        LOGGER.info("sleep end");
+        return "hell";
     }
 
 }

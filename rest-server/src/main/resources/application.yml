@@ -25,9 +25,13 @@ eureka:
 management:
   security:
     enabled: false
+endpoints:
+  shutdown:
+    enabled: true
+    sensitive: false
 log:
   home: /data/logs/${spring.profiles.active}
 
 sys:
   eureka:
-    shuntDownWaitSeconds: 100
+    shuntDownWaitSeconds: 1
