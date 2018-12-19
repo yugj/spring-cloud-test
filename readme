@@ -12,6 +12,7 @@ config-client 9009
 sv-ribbon 9010
 eureka-client 9011
 zuul      9012
+spring-boot-admin   9013
 
 consul-client 8501
 consul-rest-server 8502

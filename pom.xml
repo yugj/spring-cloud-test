@@ -28,6 +28,7 @@
         <module>consul-rest-server2</module>
         <module>sv-ribbon</module>
         <module>eureka-client</module>
+        <module>spring-boot-admin</module>
     </modules>
 
 

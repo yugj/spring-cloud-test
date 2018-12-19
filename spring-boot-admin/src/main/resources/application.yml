@@ -1,0 +1,39 @@
+server:
+  port: 9013
+
+spring:
+  profiles:
+    active: local
+  application:
+    name: spring-boot-admin
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9000/eureka/
+    initial-instance-info-replication-interval-seconds: 10 #default 40
+  healthcheck:
+     enabled: true
+  instance:
+    lease-renewal-interval-in-seconds: 5 #租期更新时间间隔R（默认30秒）
+    lease-expiration-duration-in-seconds: 15  #租期到期时间（默认90秒）
+    registry-fetch-interval-seconds: 5
+    metadata-map:
+      cluster: main
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+management:
+  security:
+    enabled: false
+endpoints:
+  shutdown:
+    enabled: true
+    sensitive: false
+
+spring.boot.admin.routes.endpoints: env,metrics,dump,jolokia,info,configprops,trace,logfile,refresh,flyway,liquibase,heapdump,loggers,auditevents,hystrix.stream
+spring.boot.admin.turbine:
+  clusters: main
+  location: mg-turbine
+
+log:
+  home: /data/logs/${spring.profiles.active}
