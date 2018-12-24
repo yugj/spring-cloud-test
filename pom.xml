@@ -29,6 +29,7 @@
         <module>sv-ribbon</module>
         <module>eureka-client</module>
         <module>spring-boot-admin</module>
+        <module>spring-clound-config-admin</module>
     </modules>
 
 
