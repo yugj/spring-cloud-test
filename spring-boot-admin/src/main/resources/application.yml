@@ -1,11 +1,11 @@
 server:
-  port: 9006
+  port: 9013
 
 spring:
   profiles:
     active: local
   application:
-    name: rest-server
+    name: spring-boot-admin
 
 eureka:
   client:
@@ -29,9 +29,11 @@ endpoints:
   shutdown:
     enabled: true
     sensitive: false
+
+spring.boot.admin.routes.endpoints: env,metrics,dump,jolokia,info,configprops,trace,logfile,refresh,flyway,liquibase,heapdump,loggers,auditevents,hystrix.stream
+spring.boot.admin.turbine:
+  clusters: main
+  location: mg-turbine
+
 log:
   home: /data/logs/${spring.profiles.active}
-
-sys:
-  eureka:
-    shuntDownWaitSeconds: 1
