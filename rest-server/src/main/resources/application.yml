@@ -3,7 +3,7 @@ server:
 
 spring:
   profiles:
-    active: @profile.id@
+    active: local
   application:
     name: rest-server
 

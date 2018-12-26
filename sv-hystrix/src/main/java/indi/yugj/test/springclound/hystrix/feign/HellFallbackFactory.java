@@ -37,6 +37,11 @@ public class HellFallbackFactory implements FallbackFactory {
                HellFallbackFactory.LOGGER.warn("hell factory fallback :" + throwable.getMessage(), throwable);
                return resp;
            }
+
+           @Override
+           public HellResp good(@RequestBody HellReq req) {
+               return null;
+           }
        };
     }
 
