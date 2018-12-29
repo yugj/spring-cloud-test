@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 /**
  * Description:
  * Created by yugj on 18/7/2 16:59.
@@ -19,7 +21,7 @@ public class HellController {
     private static final Logger LOGGER = LoggerFactory.getLogger(HellController.class);
 
     @RequestMapping("/hell")
-    public HellResp hell(@RequestBody HellReq req) throws InterruptedException {
+    public HellResp hell(@RequestBody @Valid HellReq req) throws InterruptedException {
 
         long start = System.currentTimeMillis();
 
@@ -40,6 +42,15 @@ public class HellController {
 
 
         LOGGER.info("exe time:" + (end - start));
+
+        return resp;
+    }
+
+    @RequestMapping("/good")
+    public HellResp good(@RequestBody HellReq req) {
+
+        HellResp resp = new HellResp();
+        resp.setHellResp("good");
 
         return resp;
     }

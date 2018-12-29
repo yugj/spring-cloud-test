@@ -26,4 +26,8 @@ public interface HellStub {
     @RequestMapping("/rest-sv/hell")
     HellResp hell(@RequestBody HellReq req);
 
+
+    @RequestMapping("/rest-sv/good")
+    HellResp good(@RequestBody HellReq req);
+
 }

@@ -26,4 +26,9 @@ public class HellFallback implements HellStub{
 
         return resp;
     }
+
+    @Override
+    public HellResp good(@RequestBody HellReq req) {
+        return null;
+    }
 }

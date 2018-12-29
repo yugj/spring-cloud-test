@@ -135,6 +135,12 @@ public class HellClientController {
         return response.getBody();
     }
 
+    /**
+     * for 循环请求
+     * @param hell
+     * @return
+     * @throws InterruptedException
+     */
     @RequestMapping("/hell-client6")
     @ResponseBody
     public String hellClient6(String hell) throws InterruptedException {
@@ -157,6 +163,48 @@ public class HellClientController {
 
         return "hell";
     }
+
+    /**
+     * 400
+     * @param hell
+     * @return
+     * @throws InterruptedException
+     */
+    @RequestMapping("/hell-client7")
+    @ResponseBody
+    public String hellClient7(String hell) throws InterruptedException {
+
+        HellReq hellReq = new HellReq();
+        for (int i = 0; i < Integer.MAX_VALUE; i++) {
+            Thread.sleep(300L);
+            HellResp resp = hellStub.hell(hellReq);
+            log.info("---------------->>" + resp.getHellResp());
+
+        }
+
+        return "hell";
+    }
+
+
+    /**
+     * good
+     * @param hell
+     * @return
+     * @throws InterruptedException
+     */
+    @RequestMapping("/hell-client8")
+    @ResponseBody
+    public String hellClient8(String hell) throws InterruptedException {
+
+        HellReq hellReq = new HellReq();
+        hellReq.setHellReq("good");
+
+        HellResp resp = hellStub.good(hellReq);
+        log.info("---------------->>" + resp.getHellResp());
+
+        return "hell" + resp.getHellResp();
+    }
+
 
     private String testTimeout(String hell) {
         return "time out";
