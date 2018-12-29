@@ -51,6 +51,12 @@
             <version>1.7.21</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.floragunn</groupId>
+            <artifactId>search-guard-ssl</artifactId>
+            <version>5.2.2-20</version>
+        </dependency>
+
     </dependencies>
 
 
