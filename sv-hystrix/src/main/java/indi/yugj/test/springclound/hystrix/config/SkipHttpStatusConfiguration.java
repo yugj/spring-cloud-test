@@ -1,6 +1,8 @@
 package indi.yugj.test.springclound.hystrix.config;
 
 import feign.codec.ErrorDecoder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * 配置忽略特定http 错误请求
@@ -8,8 +10,10 @@ import feign.codec.ErrorDecoder;
  * @author yugj
  * @date 2018/12/29 下午5:19.
  */
+@Configuration
 public class SkipHttpStatusConfiguration {
 
+    @Bean
     public ErrorDecoder errorDecoder() {
 
         return (methodKey, response) -> {
