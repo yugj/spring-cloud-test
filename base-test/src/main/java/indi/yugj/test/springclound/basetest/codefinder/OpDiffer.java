@@ -1,7 +1,6 @@
 package indi.yugj.test.springclound.basetest.codefinder;
 
-import java.io.*;
-import java.util.ArrayList;
+import java.io.File;
 import java.util.List;
 
 /**
@@ -25,8 +24,8 @@ public class OpDiffer {
 
     private void differ(File all, File alive) {
 
-        List<String> allOp = readOp(all);
-        List<String> aliveOp = readOp(alive);
+        List<String> allOp = FileReader.readOp(all);
+        List<String> aliveOp = FileReader.readOp(alive);
 
         allOp.removeAll(aliveOp);
 
@@ -37,43 +36,5 @@ public class OpDiffer {
 
     }
 
-    private List<String> readOp(File file) {
-
-        List<String> strList = new ArrayList<String>();
-
-        InputStreamReader read = null;
-        BufferedReader reader = null;
-
-        try {
-            read = new InputStreamReader(new FileInputStream(file),"utf-8");
-            reader = new BufferedReader(read);
-            String line;
-            while ((line = reader.readLine()) != null) {
-                strList.add(line);
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (read != null) {
-                try {
-                    read.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (reader != null) {
-                try {
-                    reader.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-        }
-
-        return strList;
-
-    }
 
 }
