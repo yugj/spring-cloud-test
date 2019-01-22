@@ -1,0 +1,15 @@
+server:
+  port: 9015
+
+spring:
+  profiles:
+    active: local
+  application:
+    name: stream
+management:
+  security:
+    enabled: false
+endpoints:
+  shutdown:
+    enabled: true
+    sensitive: false
