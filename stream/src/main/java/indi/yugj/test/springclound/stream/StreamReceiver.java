@@ -18,7 +18,13 @@ public class StreamReceiver {
     @StreamListener(Processor.INPUT)
     public void process(String message) {
 
-        log.info("receiver ------------>>" + message);
-
+        log.info("process ------------>>" + message);
     }
+
+    @StreamListener("inputHell")
+    public void process2(String message) {
+        log.info("process2 ------------>>" + message);
+    }
+
+
 }

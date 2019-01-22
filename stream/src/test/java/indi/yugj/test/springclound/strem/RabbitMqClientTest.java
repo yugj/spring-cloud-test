@@ -29,12 +29,12 @@ public class RabbitMqClientTest {
         JSONObject message = new JSONObject();
         message.put("userId", 888);
 
-        String queueName = "q.hell.stream";
+        String queueName = "q.hell.yugj";
 
         LOGGER.info("[rabbit mq send] queue:{},message:{}", queueName, message.toJSONString());
 
         rabbitTemplate.setMessageConverter(new Jackson2JsonMessageConverter());
-        rabbitTemplate.convertAndSend(queueName, message.toJSONString());
+        rabbitTemplate.convertAndSend("ex.bizRouter", queueName, message.toJSONString());
 
         System.exit(0);
 

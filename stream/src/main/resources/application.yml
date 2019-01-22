@@ -9,11 +9,26 @@ spring:
   cloud:
     stream:
       bindings:
-        input:
-          destination: q.hell.stream
-        output:
-          destination: q.hell.stream
+        #default bindings
+#        input:
+#          destination: ex.stream
+#        output:
+#          destination: ex.stream
+#          contentType: application/json
+        # my test channel bindings
+        inputHell:
+          destination: ex.bizRouter
+        outputHell:
+          destination: ex.bizRouter
           contentType: application/json
+      rabbit:
+        bindings:
+          inputHell:
+            consumer:
+              bindingRoutingKey: q.hell.yugj
+          outputHell:
+            producer:
+              routing-key-expression: '''q.hell.yugj'''
   rabbitmq:
     host: localhost
     port: 5672
