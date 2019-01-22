@@ -6,6 +6,19 @@ spring:
     active: local
   application:
     name: stream
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: q.hell.stream
+        output:
+          destination: q.hell.stream
+          contentType: application/json
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 management:
   security:
     enabled: false
