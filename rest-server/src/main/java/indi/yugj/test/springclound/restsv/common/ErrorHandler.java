@@ -7,11 +7,14 @@ import org.springframework.boot.autoconfigure.web.AbstractErrorController;
 import org.springframework.boot.autoconfigure.web.ErrorAttributes;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UrlPathHelper;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.nio.charset.Charset;
 
 /**
  * 内部异常处理
@@ -31,7 +34,9 @@ public class ErrorHandler extends AbstractErrorController {
     }
 
     @RequestMapping(value = "${error.path:/error}", produces = "application/json;charset=UTF-8")
-    public ResponseEntity error(HttpServletRequest request) {
+    public ResponseEntity error(HttpServletRequest request) throws IOException {
+
+        String body = StreamUtils.copyToString(request.getInputStream(), Charset.forName("UTF-8"));
 
         HttpStatus httpStatus = getStatus(request);
         int code = httpStatus.value();

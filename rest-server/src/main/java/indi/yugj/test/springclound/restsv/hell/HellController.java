@@ -1,12 +1,10 @@
 package indi.yugj.test.springclound.restsv.hell;
 
+import com.alibaba.fastjson.JSONObject;
 import indi.yugj.test.springclound.restsv.concurrent.JobHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -91,7 +89,25 @@ public class HellController {
         return "success";
     }
 
+    @DeleteMapping("/del")
+    public String del(@RequestBody HellReq req) {
 
+        JSONObject rs = new JSONObject();
+        rs.put("hell", System.currentTimeMillis());
+
+        LOGGER.info("del");
+
+        return rs.toJSONString();
+    }
+    @PutMapping("/put")
+    public String put(@RequestBody HellReq req) {
+
+        JSONObject rs = new JSONObject();
+        rs.put("hell", System.currentTimeMillis());
+
+        LOGGER.info("put");
+        return rs.toJSONString();
+    }
 
 
     private String hell() throws InterruptedException {
