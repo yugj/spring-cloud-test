@@ -21,8 +21,8 @@ public class OpDiffer {
 
         System.out.println("-----------------------------------");
 
-        String oldAlive = "/Users/yugj/Documents/tmp/opfinder/notalive-190118";
-        String newAlive = "/Users/yugj/Documents/tmp/opfinder/notalive-190121";
+        String oldAlive = "/Users/yugj/Documents/tmp/opfinder/notalive-190121";
+        String newAlive = "/Users/yugj/Documents/tmp/opfinder/notalive-190124";
 
         File oldFile = new File(oldAlive);
         File newFile = new File(newAlive);

@@ -31,6 +31,7 @@
         <module>spring-boot-admin</module>
         <module>spring-clound-config-admin</module>
         <module>stream</module>
+        <module>logback</module>
     </modules>
 
 
