@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <property name="APP_Name" value="logback"/>
+    <springProperty name="LOG_HOME" source="log.home"/>
+    <contextName>${APP_Name}</contextName>
+
+    <!--运行日志-->
+    <appender name="FILE"  class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/${APP_Name}/app.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!--日志文件输出的文件名-->
+            <FileNamePattern>${LOG_HOME}/${APP_Name}/%d{yyyy-MM-dd__HH}.%i.log</FileNamePattern>
+            <maxFileSize>500MB</maxFileSize>
+        </rollingPolicy>
+
+        <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder">
+
+            <includeMdcKeyName>X-B3-TraceId</includeMdcKeyName>
+
+            <customFields>
+                {
+                "sv":"${APP_Name}",
+                "hs":"${HOSTNAME}"
+                }
+            </customFields>
+
+            <fieldNames>
+                <message>msg</message>
+            </fieldNames>
+
+        </encoder>
+    </appender>
+
+    <!--接口日志-->
+    <appender name="IS-FILE"  class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/${APP_Name}/is/app.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!--日志文件输出的文件名-->
+            <FileNamePattern>${LOG_HOME}/${APP_Name}/is/%d{yyyy-MM-dd__HH}.%i.log</FileNamePattern>
+            <maxFileSize>500MB</maxFileSize>
+        </rollingPolicy>
+
+        <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder">
+
+            <includeMdcKeyName>op</includeMdcKeyName>
+            <includeMdcKeyName>X-B3-TraceId</includeMdcKeyName>
+            <includeMdcKeyName>mt</includeMdcKeyName>
+            <includeMdcKeyName>sd</includeMdcKeyName>
+            <includeMdcKeyName>rd</includeMdcKeyName>
+            <includeMdcKeyName>uid</includeMdcKeyName>
+            <includeMdcKeyName>hwuid</includeMdcKeyName>
+            <includeMdcKeyName>ac</includeMdcKeyName>
+            <includeMdcKeyName>at</includeMdcKeyName>
+            <includeMdcKeyName>rc</includeMdcKeyName>
+            <includeMdcKeyName>rst</includeMdcKeyName>
+            <customFields>
+                {
+                "sv":"${APP_Name}",
+                "hs":"${HOSTNAME}"
+                }
+            </customFields>
+
+            <fieldNames>
+                <message>msg</message>
+            </fieldNames>
+
+        </encoder>
+    </appender>
+
+    <jmxConfigurator/>
+    <root level="info">
+        <appender-ref ref="FILE"/>
+    </root>
+
+</configuration>

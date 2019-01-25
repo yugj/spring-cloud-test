@@ -15,6 +15,7 @@ zuul      9012
 spring-boot-admin   9013
 spring-config-admin 9014
 stream      9015
+logback     9016
 
 consul-client 8501
 consul-rest-server 8502

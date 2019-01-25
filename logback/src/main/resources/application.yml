@@ -1,0 +1,15 @@
+server:
+  port: 9016
+
+spring:
+  application:
+    name: logback
+management:
+  security:
+    enabled: false
+endpoints:
+  shutdown:
+    enabled: true
+    sensitive: false
+log:
+  home: /data/logs
