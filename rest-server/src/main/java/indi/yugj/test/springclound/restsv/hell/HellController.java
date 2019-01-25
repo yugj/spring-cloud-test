@@ -50,6 +50,8 @@ public class HellController {
         HellResp resp = new HellResp();
         resp.setHellResp("good");
 
+        LOGGER.info("good");
+
         return resp;
     }
 

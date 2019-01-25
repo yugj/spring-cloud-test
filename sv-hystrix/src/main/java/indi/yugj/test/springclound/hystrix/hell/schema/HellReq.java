@@ -6,6 +6,14 @@ package indi.yugj.test.springclound.hystrix.hell.schema;
  */
 public class HellReq {
 
+    public HellReq() {
+
+    }
+
+    public HellReq(String hellReq) {
+        this.hellReq = hellReq;
+    }
+
     public String hellReq;
 
     public String getHellReq() {
