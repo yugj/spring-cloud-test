@@ -28,3 +28,4 @@ nbdist/
 
 ### System Files ###
 .DS_Store
+LOG_HOME_IS_UNDEFINED
