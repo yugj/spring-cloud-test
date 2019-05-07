@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>sc-base</artifactId>
-        <groupId>indi.yugj.test.springclound</groupId>
+        <groupId>indi.yugj.test.springcloud</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -12,7 +12,7 @@
     <artifactId>swagger</artifactId>
 
     <properties>
-        <start-class>indi.yugj.test.springclound.swagger.SwaggerStart</start-class>
+        <start-class>indi.yugj.test.springcloud.swagger.SwaggerStart</start-class>
     </properties>
 
 

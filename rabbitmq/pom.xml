@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>sc-base</artifactId>
-        <groupId>indi.yugj.test.springclound</groupId>
+        <groupId>indi.yugj.test.springcloud</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -12,7 +12,7 @@
     <artifactId>rabbitmq</artifactId>
 
     <properties>
-        <start-class>indi.yugj.test.springclound.rabbitmq.RabbitStart</start-class>
+        <start-class>indi.yugj.test.springcloud.rabbitmq.RabbitStart</start-class>
     </properties>
 
 

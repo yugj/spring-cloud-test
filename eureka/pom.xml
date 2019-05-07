@@ -8,12 +8,12 @@
 
     <parent>
         <artifactId>sc-base</artifactId>
-        <groupId>indi.yugj.test.springclound</groupId>
+        <groupId>indi.yugj.test.springcloud</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
     <properties>
-        <start-class>indi.yugj.test.springclound.eureka.EurekaStart</start-class>
+        <start-class>indi.yugj.test.springcloud.eureka.EurekaStart</start-class>
     </properties>
 
     <dependencies>

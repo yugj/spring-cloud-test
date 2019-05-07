@@ -29,7 +29,7 @@ Caused by: org.springframework.context.ApplicationContextException: Unable to st
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107)
-	at indi.yugj.test.springclound.zipkin.ZipkinStart.main(ZipkinStart.java:14)
+	at ZipkinStart.main(ZipkinStart.java:14)
 	... 6 more
 Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'zipkin.server.ZipkinServerConfiguration': Unsatisfied dependency expressed through field 'httpCollector'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'zipkin.server.ZipkinHttpCollector': Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'zipkin.storage.StorageComponent' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:588)

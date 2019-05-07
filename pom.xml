@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>indi.yugj.test.springclound</groupId>
+    <groupId>indi.yugj.test.springcloud</groupId>
     <artifactId>sc-base</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
@@ -47,7 +47,6 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <spring-cloud.version>Edgware.SR5</spring-cloud.version>
-        <!--<spring-cloud.version>Dalston.SR4</spring-cloud.version>-->
         <start-class>mainclass</start-class>
         <profile.id>dev</profile.id>
     </properties>
