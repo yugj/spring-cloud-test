@@ -1,6 +1,5 @@
 package indi.yugj.test.springcloud.hystrix.feign;
 
-import indi.yugj.test.springcloud.hystrix.config.SkipHttpStatusConfiguration;
 import indi.yugj.test.springcloud.hystrix.hell.schema.HellReq;
 import indi.yugj.test.springcloud.hystrix.hell.schema.HellResp;
 import org.springframework.cloud.netflix.feign.FeignClient;
@@ -16,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Service
 @FeignClient(name = "rest-server"
         ,fallback = HellFallback.class
-        ,fallbackFactory = HellFallbackFactory.class,configuration = SkipHttpStatusConfiguration.class)
+        ,fallbackFactory = HellFallbackFactory.class)
 public interface HellStub {
 
     /**

@@ -19,6 +19,8 @@ hystrix:
   threadpool:
     default:
       coreSize: 10
+      maximumSize: 100
+      allowMaximumSizeToDivergeFromCoreSize: true
   command:
     default:
       execution:
@@ -27,35 +29,49 @@ hystrix:
             timeoutInMilliseconds: 1000
       circuitBreaker:
         requestVolumeThreshold: 2
-    "HellStub2#hell2(HellReq)":
+    # feign config command key this way ,see code blow
+    # SimpleClassName#simpleMethodName(ParamClassName)
+    # source code : feign.Feign#configKey(java.lang.Class, java.lang.reflect.Method)
+    HellStub#hell(HellReq):
       execution:
         isolation:
           thread:
             timeoutInMilliseconds: 30000
       circuitBreaker:
         requestVolumeThreshold: 2
-    "hystrix-rest":
+    # rest template custom command key
+    hystrix-command-a:
       execution:
         isolation:
           thread:
             timeoutInMilliseconds: 1000
       circuitBreaker:
         requestVolumeThreshold: 2
-    "rest-serv":
+    hystrix-command-b:
       execution:
         isolation:
           thread:
             timeoutInMilliseconds: 2000
       circuitBreaker:
         requestVolumeThreshold: 2
+    rest-server:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
 ribbon:
   MaxConnectionsPerHost: 1000
   MaxTotalConnections: 3000
-  ReadTimeout: 2000
+  ReadTimeout: 10000
   ConnectTimeout: 100
   MaxAutoRetries: 0
   MaxAutoRetriesNextServer: 0
   ServerListRefreshInterval: 5000
+  # eager load clients,
+  eager-load:
+    enabled: true
+    clients: rest-server
+# ribbon using feign client name as "command key" it is not working
 "HellStub2#hell2(HellReq)":
   ribbon:
     MaxConnectionsPerHost: 1000
@@ -65,16 +81,17 @@ ribbon:
     MaxAutoRetries: 0
     MaxAutoRetriesNextServer: 0
 
+# eureka configuration
 eureka:
   client:
+    healthcheck:
+       enabled: false
+    registry-fetch-interval-seconds: 5 #更新eureka时间 默认30秒
     serviceUrl:
       defaultZone: http://localhost:9000/eureka/
-  healthcheck:
-     enabled: false
   instance:
     lease-renewal-interval-in-seconds: 5 #租期更新时间间隔R（默认30秒）
     lease-expiration-duration-in-seconds: 15  #租期到期时间（默认90秒）
-    registry-fetch-interval-seconds: 5 #更新eureka时间 默认30秒
     metadata-map:
       cluster: main
     prefer-ip-address: true

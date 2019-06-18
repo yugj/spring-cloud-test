@@ -25,7 +25,7 @@ public class HystrixRestTemplateTestService {
      * @param hell
      * @return
      */
-    @HystrixCommand(commandKey = "hystrix-rest",fallbackMethod = "fallback")
+    @HystrixCommand(commandKey = "hystrix-command-a",fallbackMethod = "fallback")
     public String hell(String hell) {
 
         String server = "http://localhost:9006/rest-sv/hell";

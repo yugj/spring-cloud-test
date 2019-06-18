@@ -36,6 +36,13 @@ public class HellClientController {
 
     private static final Logger log = LoggerFactory.getLogger(HellClientController.class);
 
+    /**
+     * 接收入参并透传到server
+     * hell = sleep server 将sleep 5s
+     * hell = error server 将抛出运行时异常
+     * @param hell param
+     * @return test ok
+     */
     @RequestMapping("/hell-client")
     @ResponseBody
     public String hellClient(String hell) {
@@ -116,7 +123,7 @@ public class HellClientController {
         return hystrixTest(hell);
     }
 
-    @HystrixCommand(commandKey = "rest-serv",fallbackMethod = "testTimeout")
+    @HystrixCommand(commandKey = "hystrix-command-b",fallbackMethod = "testTimeout")
     public String hystrixTest(String hell) {
         String reqUrl = "http://localhost:9006/rest-sv/hell";
 
