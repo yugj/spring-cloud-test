@@ -18,9 +18,13 @@ feign:
 hystrix:
   threadpool:
     default:
-      coreSize: 10
+      coreSize: 1
       maximumSize: 100
       allowMaximumSizeToDivergeFromCoreSize: true
+      # 配置queue size 将导致maximumSize allowMaximumSizeToDivergeFromCoreSize失效
+      # hystrix超过coreSize直接进入queue
+      #maxQueueSize: 512
+      #queueSizeRejectionThreshold: 512
   command:
     default:
       execution:
@@ -81,6 +85,12 @@ ribbon:
     MaxAutoRetries: 0
     MaxAutoRetriesNextServer: 0
 
+management:
+  security:
+    enabled: false
+  health:
+    mail:
+      enabled: false
 # eureka configuration
 eureka:
   client:
