@@ -9,6 +9,9 @@ spring:
     encoding.charset: UTF-8
     encoding.enabled: true
     encoding.force: true
+  redis:
+    host: localhost
+    port: 6379
 zuul:
   routes:
     rest-server:
@@ -25,6 +28,21 @@ zuul:
     max-total-connections: 1000
   semaphore:
     max-semaphores: 2000
+  ratelimit:
+    key-prefix: rest-sv
+    enabled: true
+    repository: REDIS
+    behind-proxy: true
+    add-response-headers: true
+    default-policy-list: #optional - will apply unless specific policy exists
+      - limit: 5 #optional - request number limit per refresh interval window
+        quota: 10 #optional - request time limit per refresh interval window (in seconds)
+        refresh-interval: 60 #default value (in seconds)
+        type: #optional
+          - user
+          - origin
+          - url
+          - httpmethod
 log:
   home: /data/logs/${spring.profiles.active}
 
@@ -34,7 +52,7 @@ eureka:
       defaultZone: http://localhost:9000/eureka/
     initial-instance-info-replication-interval-seconds: 40 #default 40
     registry-fetch-interval-seconds: 5
-  healthcheck:
+    healthcheck:
      enabled: true
   instance:
     lease-renewal-interval-in-seconds: 5 #租期更新时间间隔R（默认30秒）

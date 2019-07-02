@@ -6,6 +6,10 @@ package indi.yugj.springclound.zuul;
  */
 public class MultiRequest {
 
+    /**
+     * curl -H "Content-Type: application/json" -X POST -d '{"hellReq":"test"}' http://localhost:9012/rest-sv/hell
+     * @param args
+     */
     public static void main(String[] args) {
 
     }
