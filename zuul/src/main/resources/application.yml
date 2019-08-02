@@ -2,7 +2,7 @@ server:
   port: 9012
 spring:
   profiles:
-    active: @profile.id@
+    active: local
   application:
     name: zuul
   http:
@@ -29,20 +29,20 @@ zuul:
   semaphore:
     max-semaphores: 2000
   ratelimit:
-    key-prefix: rest-sv
+#    key-prefix: hell
     enabled: true
     repository: REDIS
     behind-proxy: true
     add-response-headers: true
     default-policy-list: #optional - will apply unless specific policy exists
-      - limit: 5 #optional - request number limit per refresh interval window
-        quota: 10 #optional - request time limit per refresh interval window (in seconds)
-        refresh-interval: 60 #default value (in seconds)
+      - limit: 3 #optional - request number limit per refresh interval window
+#        quota: 10 #optional - request time limit per refresh interval window (in seconds)
+        refresh-interval: 30 #default 60 (in seconds)
         type: #optional
-          - user
+#          - user
           - origin
-          - url
-          - httpmethod
+#          - url
+#          - httpmethod
 log:
   home: /data/logs/${spring.profiles.active}
 
