@@ -39,10 +39,14 @@ zuul:
 #        quota: 10 #optional - request time limit per refresh interval window (in seconds)
         refresh-interval: 30 #default 60 (in seconds)
         type: #optional
-#          - user
-          - origin
+          - user
+#          - origin
 #          - url
 #          - httpmethod
+#          - hellz
+    customRules:
+#      - userip
+      - userid
 log:
   home: /data/logs/${spring.profiles.active}
 
