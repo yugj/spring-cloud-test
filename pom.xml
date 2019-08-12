@@ -33,6 +33,7 @@
         <module>stream</module>
         <module>logback</module>
         <module>sentinel</module>
+        <module>zuul-sentinel</module>
     </modules>
 
 

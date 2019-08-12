@@ -25,4 +25,5 @@ logback     9016
 consul-client 8501  
 consul-rest-server 8502  
 consul-rest-server2 8503  
+zuul-sentinel 9017  
 
