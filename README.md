@@ -21,9 +21,12 @@ spring-boot-admin   9013
 spring-config-admin 9014  
 stream      9015  
 logback     9016  
+zuul-sentinel 9017  
+sentinel-cluster-server 9018  
+sentinel-mvc-server 9019  
 
 consul-client 8501  
 consul-rest-server 8502  
 consul-rest-server2 8503  
-zuul-sentinel 9017  
+
 

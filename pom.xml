@@ -34,6 +34,8 @@
         <module>logback</module>
         <module>sentinel</module>
         <module>zuul-sentinel</module>
+        <module>sentinel-cluster-server</module>
+        <module>sentinel-mvc-server</module>
     </modules>
 
 

@@ -9,6 +9,7 @@ import com.alibaba.csp.sentinel.adapter.gateway.zuul.fallback.ZuulBlockFallbackM
 import com.alibaba.csp.sentinel.adapter.gateway.zuul.filters.SentinelZuulErrorFilter;
 import com.alibaba.csp.sentinel.adapter.gateway.zuul.filters.SentinelZuulPostFilter;
 import com.alibaba.csp.sentinel.adapter.gateway.zuul.filters.SentinelZuulPreFilter;
+import com.alibaba.csp.sentinel.cluster.ClusterStateManager;
 import com.alibaba.csp.sentinel.slots.block.RuleConstant;
 import com.netflix.zuul.ZuulFilter;
 import org.springframework.context.annotation.Bean;
@@ -47,11 +48,21 @@ public class RateLimitConfiguration {
      */
     @PostConstruct
     public void doInit() {
+
         //默认 fallback provider不打印一些日志，另外返回格式不是业务需要，重写下好点
         ZuulBlockFallbackManager.registerProvider(new DefaultBlockFallbackProvider());
 
+        clusterConfig();
+
         initGatewayRules();
     }
+
+    private void clusterConfig() {
+
+        ClusterStateManager.applyState(ClusterStateManager.CLUSTER_CLIENT);
+
+    }
+
 
     /**
      * 配置限流规则
