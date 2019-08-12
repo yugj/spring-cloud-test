@@ -1,0 +1,1 @@
+-Dproject.name=sentinel-mvc -Dcsp.sentinel.app.type=1 -Dcsp.sentinel.dashboard.server=localhost:8080

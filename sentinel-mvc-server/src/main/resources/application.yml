@@ -1,0 +1,6 @@
+server:
+  port: 9019
+
+spring:
+  application:
+    name: sentinel-mvc-server
