@@ -32,6 +32,7 @@
         <module>spring-clound-config-admin</module>
         <module>stream</module>
         <module>logback</module>
+        <module>sentinel</module>
     </modules>
 
 
