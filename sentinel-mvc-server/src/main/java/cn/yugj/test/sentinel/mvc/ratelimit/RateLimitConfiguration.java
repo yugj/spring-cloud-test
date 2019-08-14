@@ -24,6 +24,10 @@ public class RateLimitConfiguration {
     private String channel = "sentinel.rules.flow.channel";
     private String ruleKey = "sentinel.rules.flow.ruleKey";
 
+    /**
+     * 没有引入spring-cloud-starter-alibaba-sentinel 需要手动注册下
+     * @return
+     */
     @Bean
     public SentinelResourceAspect sentinelResourceAspect() {
         return new SentinelResourceAspect();
