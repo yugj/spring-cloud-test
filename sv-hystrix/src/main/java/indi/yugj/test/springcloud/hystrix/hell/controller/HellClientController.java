@@ -50,7 +50,7 @@ public class HellClientController {
         HellReq hellReq = new HellReq();
 
         if (hell == null) {
-            hellReq.setHellReq("yugj test");
+            hellReq.setHellReq("中文");
         } else {
             hellReq.setHellReq(hell);
         }
@@ -105,7 +105,7 @@ public class HellClientController {
         HellReq hellReq = new HellReq();
 
         if (hell == null) {
-            hellReq.setHellReq("yugj test");
+            hellReq.setHellReq("中文");
         } else {
             hellReq.setHellReq(hell);
         }

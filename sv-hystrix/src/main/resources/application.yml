@@ -12,6 +12,8 @@ spring:
 
 # feign中启用Hystrix
 feign:
+  httpclient:
+    enabled: true
   hystrix:
     enabled: true
 #熔断器超时时间设置
