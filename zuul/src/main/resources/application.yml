@@ -28,28 +28,28 @@ zuul:
     max-total-connections: 1000
   semaphore:
     max-semaphores: 2000
-  ratelimit:
-#    key-prefix: hell
-    enabled: true
-    repository: REDIS
-    behind-proxy: true
-    add-response-headers: true
-    default-policy-list: #optional - will apply unless specific policy exists
-      - limit: 3 #optional - request number limit per refresh interval window
-#        quota: 10 #optional - request time limit per refresh interval window (in seconds)
-        refresh-interval: 30 #default 60 (in seconds)
-        type: #optional
-          - user
-#          - origin
-#          - url
-#          - httpmethod
-#          - hellz
-    customRules:
-#      - userip
-      - userid
 log:
   home: /data/logs/${spring.profiles.active}
-
+hystrix:
+  threadpool:
+    default:
+      coreSize: 1
+      maximumSize: 100
+      allowMaximumSizeToDivergeFromCoreSize: true
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+      circuitBreaker:
+        requestVolumeThreshold: 2
+ribbon:
+  eureka:
+    enabled: true
+  eager-load:
+    enabled: true
+    clients: rest-server
 eureka:
   client:
     serviceUrl:
