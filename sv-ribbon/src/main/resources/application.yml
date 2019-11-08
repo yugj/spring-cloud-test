@@ -15,6 +15,14 @@ ribbon:
   NFLoadBalancerRuleClassName: com.netflix.loadbalancer.AvailabilityFilteringRule
   eureka:
     enabled: true
+#ribbon without eureka
+justribbon:
+  ribbon:
+    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+    NFLoadBalancerPingClassName: indi.yugj.test.springcloud.ribbon.CustomPing4Ribbon
+    listOfServers: http://localhost:9006,http://localhost:9106
+    eureka:
+      enabled: false
 eureka:
   client:
     serviceUrl:

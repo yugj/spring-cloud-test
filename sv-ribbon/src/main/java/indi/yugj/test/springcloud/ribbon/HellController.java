@@ -17,6 +17,8 @@ public class HellController {
 
     @Autowired
     private HellStub hellStub;
+    @Autowired
+    private JustRibbonStub justRibbonStub;
 
     @RequestMapping("/hell-client")
     @ResponseBody
@@ -46,4 +48,21 @@ public class HellController {
         return "hell";
 
     }
+
+    @RequestMapping("/just-rb")
+    @ResponseBody
+    public String justRb(String hell) {
+
+        HellReq hellReq = new HellReq();
+
+        if (hell == null) {
+            hellReq.setHellReq("yugj test");
+        } else {
+            hellReq.setHellReq(hell);
+        }
+
+        HellResp resp = justRibbonStub.hell(hellReq);
+        return "just-ribbon works fine," + resp.getHellResp();
+    }
 }
+
