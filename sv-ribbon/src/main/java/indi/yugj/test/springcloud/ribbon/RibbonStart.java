@@ -1,9 +1,7 @@
 package indi.yugj.test.springcloud.ribbon;
 
 import com.netflix.loadbalancer.AvailabilityFilteringRule;
-import com.netflix.loadbalancer.IPing;
 import com.netflix.loadbalancer.IRule;
-import com.netflix.loadbalancer.PingUrl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -28,9 +26,9 @@ public class RibbonStart {
         return new AvailabilityFilteringRule();
     }
 
-    @Bean
-    public IPing ribbonPing() {
-        return new PingUrl(false,"/info");
-    }
+//    @Bean
+//    public IPing ribbonPing() {
+//        return new PingUrl(false,"/info");
+//    }
 
 }
