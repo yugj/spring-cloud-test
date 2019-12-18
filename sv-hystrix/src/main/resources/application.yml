@@ -93,6 +93,8 @@ management:
   health:
     mail:
       enabled: false
+    rabbit:
+      enabled: false
 # eureka configuration
 eureka:
   client:
