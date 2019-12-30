@@ -21,17 +21,17 @@ public class HellController {
     @RequestMapping("/hell")
     public HellResp hell(@RequestBody @Valid HellReq req) throws InterruptedException {
 
+        LOGGER.info("hell req : " + req.getHellReq());
+
         long start = System.currentTimeMillis();
 
-        if (null != req && "sleep".equals(req.getHellReq())) {
+        if ("1".equals(req.getHellReq())) {
             Thread.sleep(5000L);
         }
 
         if ("error".equals(req.getHellReq())) {
             throw new RuntimeException("hell error");
         }
-
-        LOGGER.info("hell req : " + req.getHellReq());
 
         HellResp resp = new HellResp();
         resp.setHellResp("rest-sv resp,hell req: " + req.getHellReq());

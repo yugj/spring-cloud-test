@@ -4,12 +4,6 @@ server:
 spring:
   application:
     name: sv-hystrix
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: guest
-    password: guest
-
 # feign中启用Hystrix
 feign:
   httpclient:
@@ -32,19 +26,19 @@ hystrix:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 1000
+            timeoutInMilliseconds: 10000
       circuitBreaker:
         requestVolumeThreshold: 2
     # feign config command key this way ,see code blow
     # SimpleClassName#simpleMethodName(ParamClassName)
     # source code : feign.Feign#configKey(java.lang.Class, java.lang.reflect.Method)
-    HellStub#hell(HellReq):
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 30000
-      circuitBreaker:
-        requestVolumeThreshold: 2
+#    HellStub#hell(HellReq):
+#      execution:
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds:2000
+#      circuitBreaker:
+#        requestVolumeThreshold: 2
     # rest template custom command key
     hystrix-command-a:
       execution:
@@ -60,32 +54,26 @@ hystrix:
             timeoutInMilliseconds: 2000
       circuitBreaker:
         requestVolumeThreshold: 2
-    rest-server:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 10000
+#    rest-server:
+#      execution:
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 2000
 ribbon:
   MaxConnectionsPerHost: 1000
   MaxTotalConnections: 3000
-  ReadTimeout: 10000
+  ReadTimeout: 2000
   ConnectTimeout: 100
   MaxAutoRetries: 0
-  MaxAutoRetriesNextServer: 0
+  MaxAutoRetriesNextServer: 1
+  OkToRetryOnAllOperations: true
   ServerListRefreshInterval: 5000
+  eureka:
+    enabled: true
   # eager load clients,
   eager-load:
     enabled: true
     clients: rest-server
-# ribbon using feign client name as "command key" it is not working
-"HellStub2#hell2(HellReq)":
-  ribbon:
-    MaxConnectionsPerHost: 1000
-    MaxTotalConnections: 3000
-    ReadTimeout: 20000
-    ConnectTimeout: 10000
-    MaxAutoRetries: 0
-    MaxAutoRetriesNextServer: 0
 
 management:
   security:

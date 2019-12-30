@@ -7,10 +7,11 @@ spring:
 ribbon:
   MaxConnectionsPerHost: 1000
   MaxTotalConnections: 3000
-  ReadTimeout: 10000
+  ReadTimeout: 2000
   ConnectTimeout: 2000
   MaxAutoRetries: 0
-  MaxAutoRetriesNextServer: 0
+  MaxAutoRetriesNextServer: 1
+  OkToRetryOnAllOperations: true
   ServerListRefreshInterval: 5000
   NFLoadBalancerRuleClassName: com.netflix.loadbalancer.AvailabilityFilteringRule
   eureka:
