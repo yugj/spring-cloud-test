@@ -1,0 +1,13 @@
+server:
+  port: 9020
+spring:
+  profiles:
+    active: local
+  application:
+    name: kafka
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      enable-auto-commit: false
+      max-poll-records: 1000
+      group-id: g-hell

@@ -36,6 +36,7 @@
         <module>zuul-sentinel</module>
         <module>sentinel-cluster-server</module>
         <module>sentinel-mvc-server</module>
+        <module>kafka</module>
     </modules>
 
 

@@ -24,6 +24,7 @@ logback     9016
 zuul-sentinel 9017  
 sentinel-cluster-server 9018  
 sentinel-mvc-server 9019  
+kafka 9020  
 
 consul-client 8501  
 consul-rest-server 8502  
