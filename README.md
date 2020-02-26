@@ -29,5 +29,7 @@ kafka 9020
 consul-client 8501  
 consul-rest-server 8502  
 consul-rest-server2 8503  
+consul-grpc 8504  
+consul-grpc-client 8505    
 
 

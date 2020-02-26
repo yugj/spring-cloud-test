@@ -1,0 +1,19 @@
+server:
+  port: 8506
+
+spring:
+  application:
+    name: consul-grpc-client2
+  clound:
+    consul:
+      host: localhost
+      port: 8500
+    discovery:
+      serviceName: ${spring.application.name}
+grpc:
+  port: 6567
+  #Optionally set the number of seconds to wait for preexisting calls to finish during graceful server shutdown. New calls will be rejected during this time. A negative value is equivalent to an infinite grace period. Default value is 0 (means don’t wait).
+  shutdownGrace: 30
+  client:
+    grpc-consul-grpc:
+      negotiationType: plaintext

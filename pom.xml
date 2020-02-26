@@ -38,6 +38,9 @@
         <module>sentinel-mvc-server</module>
         <module>kafka</module>
         <module>grpc</module>
+        <module>consul-grpc</module>
+        <module>consul-grpc-client</module>
+        <module>consul-grpc-client2</module>
     </modules>
 
 
