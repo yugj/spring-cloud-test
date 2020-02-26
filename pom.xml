@@ -41,6 +41,7 @@
         <module>consul-grpc</module>
         <module>consul-grpc-client</module>
         <module>consul-grpc-client2</module>
+        <module>consul-kv</module>
     </modules>
 
 

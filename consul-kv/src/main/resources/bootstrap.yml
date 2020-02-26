@@ -1,0 +1,15 @@
+spring:
+  cloud:
+    #需要配置到bootstrap 这边配置才生效
+    consul:
+      host: localhost
+      port: 8500
+      config:
+        default-context: consul-kv
+        prefix: config
+        enabled: true
+        format: yaml
+        data-key: data
+        watch:
+          enabled: true
+          delay: 1000

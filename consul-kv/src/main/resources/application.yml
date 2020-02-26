@@ -1,0 +1,21 @@
+server:
+  port: 8507
+
+spring:
+  application:
+    name: consul-kv
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      config:
+        default-context: consul-kv
+        prefix: config
+        enabled: true
+        format: yaml
+        data-key: data
+        watch:
+          enabled: true
+          delay: 1000
+      discovery:
+        serviceName: ${spring.application.name}
