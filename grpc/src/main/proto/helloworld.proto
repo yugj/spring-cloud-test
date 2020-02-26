@@ -1,0 +1,24 @@
+syntax = "proto3";
+// 配置是否生成多文件，如 区分出参 入参 和 接口定义文件
+option java_multiple_files = false;
+// 包名
+//option java_package = "cn.yugj.grpc.helloworld";
+option java_outer_classname = "HelloWorldProto";
+
+// The greeting service definition.
+service Greeter {
+  // Sends a greeting
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+  // Sends another greeting
+  rpc SayHelloAgain (HelloRequest) returns (HelloReply) {}
+}
+
+// The request message containing the user's name.
+message HelloRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings
+message HelloReply {
+  string message = 1;
+}

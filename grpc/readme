@@ -1,0 +1,7 @@
+
+生产java文件及grpc客户端
+protoc --plugin=protoc-gen-grpc-java=/Users/yugj/mdev/yugj/grpc-java/compiler/build/exe/java_plugin/protoc-gen-grpc-java --grpc-java_out=./proto --proto_path=./proto --java_out=./proto ./proto/route_guide.proto
+
+grpc java 原生grpc
+
+grpcboot 集成spring boot 2.x

@@ -1,0 +1,13 @@
+server:
+  port: 9006
+# grpc config
+# configuration https://github.com/LogNet/grpc-spring-boot-starter#custom-grpc-server-configuration
+grpc:
+  port: 6565
+  #Optionally set the number of seconds to wait for preexisting calls to finish during graceful server shutdown. New calls will be rejected during this time. A negative value is equivalent to an infinite grace period. Default value is 0 (means don’t wait).
+  shutdownGrace: 30
+spring:
+  profiles:
+    active: local
+  application:
+    name: grpc
