@@ -1,0 +1,10 @@
+server:
+  port: 8504
+
+spring:
+  application:
+    name: consul-grpc2
+grpc:
+  client:
+    consul-grpc2:
+      negotiationType: plaintext
