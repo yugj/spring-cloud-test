@@ -44,7 +44,7 @@ public class HelloWorldClient {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        HelloWorldClient client = new HelloWorldClient("127.0.0.1", 6565);
+        HelloWorldClient client = new HelloWorldClient("127.0.0.1", 6567);
         try {
             String user = "hell";
             if (args.length > 0) {
