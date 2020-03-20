@@ -10,10 +10,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>consul-client</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>../consul-rest-server</module>
-    </modules>
+
+    <properties>
+        <start-class>indi.yugj.test.springcloud.consul.client.ConsulClientStart</start-class>
+    </properties>
 
     <dependencies>
         <dependency>

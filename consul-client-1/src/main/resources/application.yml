@@ -6,12 +6,6 @@ spring:
     active: @profile.id@
   application:
     name: consul-client-1
-  clound:
-    consul:
-      host: localhost
-      port: 8500
-    discovery:
-      serviceName: ${spring.application.name}
 
 management:
   security:
