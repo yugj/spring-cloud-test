@@ -19,7 +19,7 @@ public class GreeterService extends GreeterGrpc.GreeterImplBase {
     @Override
     public void sayHello(HelloWorldProto.HelloRequest request, StreamObserver<HelloWorldProto.HelloReply> responseObserver) {
 
-        logger.info("say hell");
+        logger.info("say hell2");
 
         final HelloWorldProto.HelloReply.Builder replyBuilder =
                 HelloWorldProto.HelloReply.newBuilder()

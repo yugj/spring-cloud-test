@@ -17,3 +17,5 @@ grpc:
   client:
     grpc-consul-grpc:
       negotiationType: plaintext
+    consul-grpc2:
+      negotiationType: plaintext

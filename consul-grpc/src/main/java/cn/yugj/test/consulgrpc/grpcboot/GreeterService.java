@@ -4,8 +4,10 @@ import cn.yugj.test.consulgrpc.grpc.stub.GreeterGrpc;
 import cn.yugj.test.consulgrpc.grpc.stub.HelloWorldProto;
 import io.grpc.stub.StreamObserver;
 import org.lognet.springboot.grpc.GRpcService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.util.logging.Logger;
+
 
 /**
  * @author yugj
@@ -14,7 +16,7 @@ import java.util.logging.Logger;
 @GRpcService
 public class GreeterService extends GreeterGrpc.GreeterImplBase {
 
-    private static final Logger log = Logger.getGlobal();
+    private static final Logger log = LoggerFactory.getLogger(GreeterService.class);
     @Override
     public void sayHello(HelloWorldProto.HelloRequest request, StreamObserver<HelloWorldProto.HelloReply> responseObserver) {
 
