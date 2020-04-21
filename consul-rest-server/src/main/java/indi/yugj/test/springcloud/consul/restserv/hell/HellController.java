@@ -32,7 +32,7 @@ public class HellController {
         LOGGER.info("hell req : " + req.getHellReq());
 
         HellResp resp = new HellResp();
-        resp.setHellResp("rest-sv resp,hell req: " + req.getHellReq());
+        resp.setHellResp("rest-sv resp,hell req: " + req.getHellReq() + start);
 
         long end = System.currentTimeMillis();
 

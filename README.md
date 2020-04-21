@@ -1,35 +1,36 @@
-# spring cloud test
+# spring cloud quickstart dm
+
 ## version
+
 Edgware.SR5
 
 ## test sv - port
-service port  
-eureka  9000  
-config  9001  
-turbine 9002  
-zipkin  9003  
-zipkin-client 9004  
-swagger 9005  
-rest-sv 9006  
-sv-hystrix  9007  
-rabbitmq 9008  
-config-client 9009  
-sv-ribbon 9010  
-eureka-client 9011  
-zuul      9012  
-spring-boot-admin   9013  
-spring-config-admin 9014  
-stream      9015  
-logback     9016  
-zuul-sentinel 9017  
-sentinel-cluster-server 9018  
-sentinel-mvc-server 9019  
-kafka 9020  
 
-consul-client 8501  
-consul-rest-server 8502  
-consul-rest-server2 8503  
-consul-grpc 8504  
-consul-grpc-client 8505    
-
-
+| module                  | desc                                                         |
+| ----------------------- | ------------------------------------------------------------ |
+| eureka                  | 注册中心                                                     |
+| config                  | 配置中心                                                     |
+| turbine                 | hystrix监控面板                                              |
+| zipkin                  | 链路跟踪                                                     |
+| zipkin-client           | zipkin test client                                           |
+| swagger                 | swagger文档使用                                              |
+| rest-sv                 | 基础rest服务                                                 |
+| sv-hystrix              | hystrix server                                               |
+| rabbitmq                | rabbitmq use case                                            |
+| config-client           | spring cloud config client                                   |
+| zuul                    | 网关 1.x                                                     |
+| spring-boot-admin       | spring boot admin use case                                   |
+| spring-config-admin     | spring-config-admin use case                                 |
+| stream                  | spring 流处理框架集成使用                                    |
+| logback                 | logback使用测试                                              |
+| zuul-sentinel           | sentinel集成及改造<br />https://github.com/yugj/ratelimit-demo |
+| sentinel-cluster-server | sentinel cluster                                             |
+| sentinel-mvc-server     | sentinel mvc                                                 |
+| kafka                   | kafka 使用                                                   |
+| consul-client           | consul-client 客户端                                         |
+| consul-rest-server      | consul-rest-server                                           |
+| consul-rest-server2     | consul-rest-server2                                          |
+| consul-grp              | io.github.lognet grpc-spring-boot-starter                    |
+| Consul-grp2             | net.devh grpc-spring-boot-starter                            |
+| consul-grpc-client      | io.github.lognet grpc-spring-boot-starter client             |
+| Consul-grpc-client2     | net.devh grpc-spring-boot-starter client                     |
