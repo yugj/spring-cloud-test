@@ -27,23 +27,23 @@ public class HellController {
         HellReq hellReq = new HellReq();
 
         if (hell == null) {
-            hellReq.setHellReq("yugj test");
+//            hellReq.setHellReq("yugj test");
         } else {
             hellReq.setHellReq(hell);
         }
-
-        Integer end = Integer.valueOf(hell);
-        for (int i = 0; i < end; i++) {
-
-            try {
-                Thread.sleep(1000L);
-
-                HellResp resp = hellStub.hell(hellReq);
-                System.out.println("hell ----------------------------------------------------->> success:" + resp.getHellResp());
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
-        }
+        HellResp resp = hellStub.hell(hellReq);
+//        Integer end = Integer.valueOf(hell);
+//        for (int i = 0; i < end; i++) {
+//
+//            try {
+//                Thread.sleep(1000L);
+//
+//                HellResp resp = hellStub.hell(hellReq);
+//                System.out.println("hell ----------------------------------------------------->> success:" + resp.getHellResp());
+//            } catch (Exception e) {
+//                System.out.println(e.getMessage());
+//            }
+//        }
 
         return "hell";
 

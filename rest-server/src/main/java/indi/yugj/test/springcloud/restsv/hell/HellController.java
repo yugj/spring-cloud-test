@@ -26,6 +26,7 @@ public class HellController {
         long start = System.currentTimeMillis();
 
         if ("1".equals(req.getHellReq())) {
+            System.out.println("sleep 5s");
             Thread.sleep(5000L);
         }
 

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Service
 @FeignClient(name = "rest-server"
-        ,fallback = HellFallback.class
+//        ,fallback = HellFallback.class
         ,fallbackFactory = HellFallbackFactory.class)
 public interface HellStub {
 
@@ -23,7 +23,7 @@ public interface HellStub {
      * @param req req
      * @return resp
      */
-    @RequestMapping("/rest-sv/hell")
+    @RequestMapping("/rest-sv/hellnotfound")
     HellResp hell(@RequestBody HellReq req);
 
 
