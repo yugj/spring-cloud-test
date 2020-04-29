@@ -11,3 +11,10 @@ spring:
     port: 5672
     username: guest
     password: guest
+
+# not working
+#    listener:
+#      simple:
+#        missing-queues-fatal: false
+#      direct:
+#        missing-queues-fatal: false
