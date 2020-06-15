@@ -8,6 +8,7 @@
     <!--运行日志-->
     <appender name="FILE"  class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_HOME}/${APP_Name}/app.log</file>
+        <filter class="cn.yugj.logback.MyFilter"/>
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <!--日志文件输出的文件名-->
             <FileNamePattern>${LOG_HOME}/${APP_Name}/%d{yyyy-MM-dd__HH}.%i.log</FileNamePattern>
@@ -35,6 +36,7 @@
     <!--接口日志-->
     <appender name="IS-FILE"  class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_HOME}/${APP_Name}/is/app.log</file>
+        <filter class="cn.yugj.logback.MyFilter"/>
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <!--日志文件输出的文件名-->
             <FileNamePattern>${LOG_HOME}/${APP_Name}/is/%d{yyyy-MM-dd__HH}.%i.log</FileNamePattern>
@@ -68,7 +70,6 @@
         </encoder>
     </appender>
 
-    <jmxConfigurator/>
     <root level="info">
         <appender-ref ref="FILE"/>
     </root>

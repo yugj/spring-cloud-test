@@ -36,6 +36,17 @@ public class LogbackController {
         return "ok";
     }
 
+    /**
+     * curl localhost:9016/lb/filter
+     * @return
+     */
+    @GetMapping("/lb/filter")
+    public Object filter() {
+        log.info("hell");
+        is.info("is");
+        return "ok";
+    }
+
 
     private void loopLog(int times) {
         for (int i = 0; i < times; i++) {
