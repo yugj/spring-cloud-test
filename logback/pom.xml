@@ -11,6 +11,9 @@
 
     <artifactId>logback</artifactId>
 
+    <properties>
+        <start-class>cn.yugj.logback.LogbackStart</start-class>
+    </properties>
     <dependencies>
 
         <dependency>
