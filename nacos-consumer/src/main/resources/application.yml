@@ -1,0 +1,18 @@
+server:
+  port: 9002
+
+spring:
+  profiles:
+    active: local
+  application:
+    name: nacos-consumer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: 3d1842a4-0e9f-4266-8f35-eb43892e1efe
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

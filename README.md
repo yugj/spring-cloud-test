@@ -3,6 +3,7 @@
 ## version
 
 Edgware.SR5
+H SR1
 
 ## test sv - port
 
@@ -34,3 +35,5 @@ Edgware.SR5
 | Consul-grp2             | net.devh grpc-spring-boot-starter                            |
 | consul-grpc-client      | io.github.lognet grpc-spring-boot-starter client             |
 | Consul-grpc-client2     | net.devh grpc-spring-boot-starter client                     |
+| nacos-provider     | nacos test                     |
+| nacos-consumer     | nacos test                     |
