@@ -2,6 +2,7 @@ package indi.yugj.test.springcloud.consul.restserv.hell;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +17,15 @@ public class HellController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(HellController.class);
 
+    @Autowired
+    private ConfigProp configProp;
+
+    /**
+     * curl localhost:8502/consul/rest-serv/hell
+     * @param req
+     * @return
+     * @throws InterruptedException
+     */
     @RequestMapping("/hell")
     public HellResp hell(@RequestBody HellReq req) throws InterruptedException {
 
@@ -37,7 +47,7 @@ public class HellController {
         long end = System.currentTimeMillis();
 
 
-        LOGGER.info("exe time:" + (end - start));
+        LOGGER.info("exe time:" + (end - start) + "," + configProp.getHell());
 
         return resp;
     }
