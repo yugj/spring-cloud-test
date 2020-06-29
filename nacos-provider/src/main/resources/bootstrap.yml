@@ -11,3 +11,6 @@ spring:
         # 必须在bootstrap文件里面
         file-extension: yaml
         group: sop
+        extension-configs[0].data-id: common.yaml
+        extension-configs[0].group: sop
+        extension-configs[0].refresh: true

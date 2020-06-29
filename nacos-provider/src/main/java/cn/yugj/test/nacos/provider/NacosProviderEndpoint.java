@@ -15,6 +15,8 @@ public class NacosProviderEndpoint {
 
     @Autowired
     private NacosConfProperties nacosConfProperties;
+    @Autowired
+    private NacosExtProperties nacosExtProperties;
 
     @Autowired
     private Environment environment;
@@ -30,6 +32,9 @@ public class NacosProviderEndpoint {
 
         String sop2 = environment.getProperty("jwt.sop");
         System.out.println("nacos prop env val:" + sop2);
+
+        String ext = nacosExtProperties.getTest();
+        System.out.println("ext :" + ext);
 
         return "Hello Nacos Discovery " + string;
     }
