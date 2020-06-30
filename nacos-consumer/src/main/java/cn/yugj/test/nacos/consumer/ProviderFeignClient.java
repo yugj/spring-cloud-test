@@ -15,4 +15,7 @@ public interface ProviderFeignClient {
 
     @GetMapping(value = "/echo/{string}")
     String echo(@PathVariable String string);
+
+    @GetMapping(value = "/test/{stime}")
+    String test(@PathVariable Integer stime);
 }

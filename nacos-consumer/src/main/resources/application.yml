@@ -13,6 +13,38 @@ spring:
         namespace: 3d1842a4-0e9f-4266-8f35-eb43892e1efe
         #namespace + group 作为唯一的域，可用作隔离多环境使用，比如 A产品测试环境、开发环境
         group: sop
+feign:
+  hystrix:
+    enabled: true
+#线程隔离配置
+#hystrix:
+#  threadpool:
+#    default:
+#      coreSize: 30
+#      maximumSize: 300
+#      allowMaximumSizeToDivergeFromCoreSize: true
+#  command:
+#    default:
+#      execution:
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 7000
+#信号量隔离配置 简单ab测试 信号量隔离 低时延（5ms内 最好是1 2ms）性能优于线程隔离，高时延(5ms+)新能比线程隔离差
+#阿里sentinel文档描述线程隔离耗资源 线程切换消耗高 ，这个可能是建立在接口低时延场景
+#若资源丰富，可暂时不考虑sentinel代替hystrix，另外sentinel或者hystrix信号量隔离不支持超时配置，如果对这个需要比较强烈的话需要注意
+#sentinel管理端还是挺好用的，大规模压测没有实际，不太清楚线程隔离和信号量隔离具体差距临界条件是什么，若资源紧张可以考虑信号量方式
+#网络目前也没有找到这块官方或者权威一些的测试数据，线程隔离问题点在于线程切换和线程上下文拷贝的开销，整体来说信号量更不挑剔资源
+#官方hystrix建议 低时延采用信号量隔离方式，这边低表示为内存级别的接口访问https://github.com/Netflix/Hystrix/wiki/How-it-Works#cost-of-threads
+#整体建议还是使用线程隔离，针对低时延内存级别访问并且响应时间稳定场景使用信号量隔离
+#若系统采用阻塞io使用线程隔离，若系统非阻塞io使用信号量隔离减少不必要的开销
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: SEMAPHORE
+          semaphore:
+            maxConcurrentRequests: 10000
 ribbon:
   MaxConnectionsPerHost: 1000
   MaxTotalConnections: 6000

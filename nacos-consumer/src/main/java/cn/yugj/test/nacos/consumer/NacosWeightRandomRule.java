@@ -38,7 +38,7 @@ public class NacosWeightRandomRule extends ZoneAvoidanceRule {
                     .namingServiceInstance()
                     .selectOneHealthyInstance(name, discoveryProperties.getGroup());
 
-            log.info("选中的instance = {}", instance.getPort());
+//            log.info("选中的instance = {}", instance.getPort());
 
             /*
              * instance转server的逻辑参考自：

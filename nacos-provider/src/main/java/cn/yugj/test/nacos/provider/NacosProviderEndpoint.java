@@ -24,11 +24,18 @@ public class NacosProviderEndpoint {
     /**
      * curl localhost:9001/echo/xxx
      */
+    @GetMapping(value = "/test/{stime}")
+    public String test(@PathVariable Integer stime) throws InterruptedException {
+        Thread.sleep(stime);
+        System.out.println("sleep :" + stime);
+        return "ok";
+    }
+
+    /**
+     * curl localhost:9001/echo/xxx
+     */
     @GetMapping(value = "/echo/{string}")
-    public String echo(@PathVariable String string) throws InterruptedException {
-        if ("sleep".equals(string)) {
-            Thread.sleep(5000L);
-        }
+    public String echo(@PathVariable String string) {
         String sop = nacosConfProperties.getSop();
         System.out.println("nacos prop sop val:" + sop);
 
