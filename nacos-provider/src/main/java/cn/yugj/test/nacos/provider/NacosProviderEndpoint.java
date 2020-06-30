@@ -25,8 +25,10 @@ public class NacosProviderEndpoint {
      * curl localhost:9001/echo/xxx
      */
     @GetMapping(value = "/echo/{string}")
-    public String echo(@PathVariable String string) {
-
+    public String echo(@PathVariable String string) throws InterruptedException {
+        if ("sleep".equals(string)) {
+            Thread.sleep(5000L);
+        }
         String sop = nacosConfProperties.getSop();
         System.out.println("nacos prop sop val:" + sop);
 

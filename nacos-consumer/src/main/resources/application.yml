@@ -16,8 +16,8 @@ spring:
 ribbon:
   MaxConnectionsPerHost: 1000
   MaxTotalConnections: 6000
-  ReadTimeout: 5000
-  ConnectTimeout: 2000
+  ReadTimeout: 1000
+  ConnectTimeout: 1000
   MaxAutoRetries: 0
   MaxAutoRetriesNextServer: 0
   ServerListRefreshInterval: 10000
