@@ -11,6 +11,19 @@ spring:
       discovery:
         server-addr: 127.0.0.1:8848
         namespace: 3d1842a4-0e9f-4266-8f35-eb43892e1efe
+        #namespace + group 作为唯一的域，可用作隔离多环境使用，比如 A产品测试环境、开发环境
+        group: sop
+ribbon:
+  MaxConnectionsPerHost: 1000
+  MaxTotalConnections: 6000
+  ReadTimeout: 5000
+  ConnectTimeout: 2000
+  MaxAutoRetries: 0
+  MaxAutoRetriesNextServer: 0
+  ServerListRefreshInterval: 10000
+  eager-load:
+    enabled: true
+    clients: nacos-provider
 management:
   endpoints:
     web:

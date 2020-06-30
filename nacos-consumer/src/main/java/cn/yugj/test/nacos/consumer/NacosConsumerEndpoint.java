@@ -21,16 +21,26 @@ public class NacosConsumerEndpoint {
     @Autowired
     private RestTemplate restTemplate;
 
+    @Autowired
+    private ProviderFeignClient providerFeignClient;
+
     @Value("${spring.application.name}")
     private String appName;
 
     @GetMapping("/echo/app-name")
     public String echoAppName() {
+
+        String feignResp = providerFeignClient.echo("feign test");
+        System.out.println("feign test :" + feignResp);
+
         //Access through the combination of LoadBalanceClient and RestTemplate
         ServiceInstance serviceInstance = loadBalancerClient.choose("nacos-provider");
         String path = String.format("http://%s:%s/echo/%s", serviceInstance.getHost(), serviceInstance.getPort(), appName);
 
         System.out.println("request path:" + path);
-        return restTemplate.getForObject(path, String.class);
+        String restResp = restTemplate.getForObject(path, String.class);
+        System.out.println("resp test:" + restResp);
+
+        return restResp;
     }
 }
