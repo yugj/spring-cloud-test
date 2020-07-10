@@ -22,3 +22,8 @@ management:
     web:
       exposure:
         include: '*'
+  health:
+    NacosDiscovery:
+      enabled: false
+    NacosConfig:
+      enabled: false

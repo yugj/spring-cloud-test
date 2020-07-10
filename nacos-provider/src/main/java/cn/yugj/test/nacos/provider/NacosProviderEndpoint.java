@@ -45,6 +45,9 @@ public class NacosProviderEndpoint {
         String ext = nacosExtProperties.getTest();
         System.out.println("ext :" + ext);
 
+        String publicProp = environment.getProperty("public");
+        System.out.println("public" + publicProp);
+
         return "Hello Nacos Discovery " + string;
     }
 }
