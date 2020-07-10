@@ -4,13 +4,17 @@ spring:
       discovery:
         server-addr: 127.0.0.1:8848
         namespace: 3d1842a4-0e9f-4266-8f35-eb43892e1efe
-        group: sop
+        group: dev
+        username: mgqq
+        password: mgqq
       config:
         server-addr: 127.0.0.1:8848
         namespace: 3d1842a4-0e9f-4266-8f35-eb43892e1efe
         # 必须在bootstrap文件里面
         file-extension: yaml
-        group: sop
+#        group: sop
         extension-configs[0].data-id: common.yaml
         extension-configs[0].group: sop
         extension-configs[0].refresh: true
+        username: mgqq
+        password: mgqq
