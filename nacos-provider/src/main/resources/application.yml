@@ -6,24 +6,20 @@ spring:
 #    active: local
   application:
     name: nacos-provider
-#  cloud:
-#    nacos:
-#      discovery:
-#        server-addr: 127.0.0.1:8848
-#        namespace: 3d1842a4-0e9f-4266-8f35-eb43892e1efe
-#        group: sop
-#      config:
-#        server-addr: 127.0.0.1:8848
-#        namespace: 3d1842a4-0e9f-4266-8f35-eb43892e1efe
-#        file-extension: yaml
-#        group: sop
+  security:
+    user:
+      name: yugj
+      password: yugj
+      roles: sys
 management:
   endpoints:
     web:
       exposure:
         include: '*'
+      base-path: /sys
   health:
     NacosDiscovery:
       enabled: false
     NacosConfig:
       enabled: false
+sys.useNacosAfterStoppedEvent: true
