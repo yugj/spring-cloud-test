@@ -63,6 +63,12 @@
             <version>2.1</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.jeasy</groupId>
+            <version>4.2.0</version>
+            <artifactId>easy-random-core</artifactId>
+        </dependency>
+
     </dependencies>
 
 
