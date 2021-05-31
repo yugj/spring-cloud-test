@@ -11,6 +11,11 @@
 
     <artifactId>zuul-sentinel</artifactId>
 
+    <properties>
+        <sentinel.version>1.8.1</sentinel.version>
+        <start-class>cn.yugj.test.zuul.sentinel.ZuulSentinelStart</start-class>
+    </properties>
+
     <dependencies>
 
         <dependency>
@@ -28,20 +33,41 @@
 
         <dependency>
             <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-annotation-aspectj</artifactId>
+            <version>${sentinel.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
             <artifactId>sentinel-zuul-adapter</artifactId>
-            <version>1.6.3</version>
+            <version>${sentinel.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.alibaba.csp</groupId>
             <artifactId>sentinel-transport-simple-http</artifactId>
-            <version>1.6.3</version>
+            <version>${sentinel.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-datasource-zookeeper</artifactId>
+            <version>${sentinel.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-core</artifactId>
+            <version>${sentinel.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.alibaba.csp</groupId>
             <artifactId>sentinel-cluster-client-default</artifactId>
-            <version>1.6.3</version>
+            <version>${sentinel.version}</version>
         </dependency>
 
     </dependencies>

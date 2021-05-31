@@ -42,4 +42,7 @@ eureka:
     prefer-ip-address: true
     instance-id: ${spring.cloud.client.ipAddress}:${server.port}
 
-
+sentinel:
+  repository:
+    zookeeper:
+      nodes: yourzknodes

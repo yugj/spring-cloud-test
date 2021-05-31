@@ -45,6 +45,7 @@
         <module>consul-grpc2</module>
         <module>nacos-consumer</module>
         <module>nacos-provider</module>
+        <module>soul-gw</module>
     </modules>
 
 

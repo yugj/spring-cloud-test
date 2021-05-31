@@ -14,4 +14,5 @@ java -Dserver.port=8080 -Dcsp.sentinel.dashboard.server=localhost:8080 -Dproject
 **console client vm param**
 ```
 -Dproject.name=zuul-sentinel-2 -Dcsp.sentinel.app.type=1 -Dcsp.sentinel.dashboard.server=localhost:8080
+
 ```

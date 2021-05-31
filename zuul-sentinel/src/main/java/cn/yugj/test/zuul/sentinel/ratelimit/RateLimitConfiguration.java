@@ -13,7 +13,6 @@ import com.alibaba.csp.sentinel.cluster.ClusterStateManager;
 import com.alibaba.csp.sentinel.slots.block.RuleConstant;
 import com.netflix.zuul.ZuulFilter;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.PostConstruct;
 import java.util.HashSet;
@@ -23,7 +22,7 @@ import java.util.Set;
  * @author yugj
  * @date 2019/8/12 上午10:13.
  */
-@Configuration
+//@Configuration
 public class RateLimitConfiguration {
 
     @Bean
